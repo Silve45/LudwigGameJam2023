@@ -1,0 +1,142 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://assets/sprites/testSprites/loose sprites.png" type="Texture" id=1]
+[ext_resource path="res://assets/animations/idle_down.tres" type="Animation" id=2]
+[ext_resource path="res://assets/scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://assets/animations/move_up.tres" type="Animation" id=4]
+[ext_resource path="res://assets/animations/idle_right.tres" type="Animation" id=5]
+[ext_resource path="res://assets/animations/move_right.tres" type="Animation" id=6]
+[ext_resource path="res://assets/animations/idle_left.tres" type="Animation" id=7]
+[ext_resource path="res://assets/animations/move_left.tres" type="Animation" id=8]
+[ext_resource path="res://assets/animations/move_down.tres" type="Animation" id=9]
+[ext_resource path="res://assets/animations/idle_up.tres" type="Animation" id=10]
+[ext_resource path="res://resources/BitPotion.ttf" type="DynamicFontData" id=11]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 9, 9.5 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 100
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 11 )
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "idle_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=8]
+blend_point_0/node = SubResource( 4 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 5 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 6 )
+blend_point_2/pos = Vector2( 0, 1 )
+blend_point_3/node = SubResource( 7 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "move_left"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "move_right"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "move_up"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "move_down"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=15]
+blend_point_0/node = SubResource( 11 )
+blend_point_0/pos = Vector2( -1.1, 0 )
+blend_point_1/node = SubResource( 12 )
+blend_point_1/pos = Vector2( 1.1, 0 )
+blend_point_2/node = SubResource( 13 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 14 )
+blend_point_3/pos = Vector2( 0, 1 )
+min_space = Vector2( -1.1, -1.1 )
+max_space = Vector2( 1.1, 1.1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachine" id=9]
+states/idle/node = SubResource( 8 )
+states/idle/position = Vector2( 263, 152 )
+states/walk/node = SubResource( 15 )
+states/walk/position = Vector2( 490.019, 157 )
+transitions = [ "idle", "walk", SubResource( 16 ), "walk", "idle", SubResource( 17 ) ]
+start_node = "idle"
+graph_offset = Vector2( -189.981, 0 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+scale = Vector2( 4, 4 )
+script = ExtResource( 3 )
+speed = 150.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -0.5 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/idle_down = ExtResource( 2 )
+anims/idle_left = ExtResource( 7 )
+anims/idle_right = ExtResource( 5 )
+anims/idle_up = ExtResource( 10 )
+anims/move_down = ExtResource( 9 )
+anims/move_left = ExtResource( 8 )
+anims/move_right = ExtResource( 6 )
+anims/move_up = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -12.0
+margin_top = -25.0
+margin_right = 113.0
+margin_bottom = 55.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 3 )
+text = "font"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 9 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 10 )
+parameters/idle/blend_position = Vector2( 0.0290792, 0.646707 )
+parameters/walk/blend_position = Vector2( -0.952496, 0.593606 )
