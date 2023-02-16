@@ -14,11 +14,14 @@ config/name="Ludwig Game Jam 2023"
 run/main_scene="res://scenes/MainScene1.tscn"
 config/icon="res://assets/sprites/testSprites/icon.png"
 
+[autoload]
+
+Globals="*res://assets/scripts/Globals.gd"
+
 [display]
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -84,6 +87,14 @@ pause={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="objects"
+2d_physics/layer_3="enemies"
+2d_physics/layer_4="enemy_only_objects"
+2d_physics/layer_5="world"
 
 [physics]
 
