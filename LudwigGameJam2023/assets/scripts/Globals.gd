@@ -2,6 +2,7 @@ extends Node
 
 var health = 3
 var maxHealth = 3
+var chargeHairBall = 0
 
 func _process(delta):
 	if Globals.health <= 0:

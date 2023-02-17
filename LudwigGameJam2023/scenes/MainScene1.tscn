@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/sprites/testSprites/TX Tileset Grass.png" type="Texture" id=1]
 [ext_resource path="res://assets/scripts/MainScene1.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://resources/fonts/BigFont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://scenes/Pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/ui_Left_Container.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/PracticeAttackArea.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -271,5 +272,8 @@ knockback_modifier = 25.0
 [node name="heartLayer" type="CanvasLayer" parent="."]
 
 [node name="HeartContainer" parent="heartLayer" instance=ExtResource( 7 )]
+
+[node name="PracticeAttackArea" parent="." instance=ExtResource( 8 )]
+position = Vector2( 479, 560 )
 
 [editable path="PauseLayer"]
