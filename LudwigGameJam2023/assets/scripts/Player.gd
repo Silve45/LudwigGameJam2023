@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var label = $Label
 onready var animationTree = $AnimationTree
 onready var hurtBox = $hurtBox
+onready var animationPlayer = $AnimationPlayer
 
 export(float) var speed = 50
 export (bool) var receives_knockback = true
@@ -79,7 +80,10 @@ func _die():
 	if Globals.health == 0:
 		print("die") #will playDeathAnim and restart where you are
 		dead = true
+		animationPlayer.play("dead")
 		label.set_text("dead")
+	else:
+		pass
 
 func receive_knockback(damage_source_pos: Vector2, recivied_damage: int):
 	if receives_knockback:

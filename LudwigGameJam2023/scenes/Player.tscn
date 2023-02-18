@@ -1,6 +1,6 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
-[ext_resource path="res://assets/sprites/testSprites/loose sprites.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/testSprites/Cat_sprite_sheet.png" type="Texture" id=1]
 [ext_resource path="res://assets/animations/idle_down.tres" type="Animation" id=2]
 [ext_resource path="res://assets/scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://assets/animations/move_up.tres" type="Animation" id=4]
@@ -28,6 +28,35 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "dead"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
 }
 
 [sub_resource type="DynamicFont" id=3]
@@ -106,7 +135,7 @@ extents = Vector2( 5.5, 4.125 )
 extents = Vector2( 3, 4.5 )
 
 [node name="Player" type="KinematicBody2D"]
-scale = Vector2( 4, 4 )
+scale = Vector2( 3, 3 )
 collision_mask = 18
 script = ExtResource( 3 )
 speed = 150.0
@@ -114,14 +143,15 @@ knockback_modifier = 5.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 8
-vframes = 8
+hframes = 4
+vframes = 4
 
 [node name="playerWorldCollision" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
+anims/dead = SubResource( 20 )
 anims/idle_down = ExtResource( 2 )
 anims/idle_left = ExtResource( 7 )
 anims/idle_right = ExtResource( 5 )

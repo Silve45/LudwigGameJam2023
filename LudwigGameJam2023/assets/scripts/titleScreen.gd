@@ -4,13 +4,13 @@ export var starSpeed = 3
 
 onready var buttonHolder = $ButtonHolder
 onready var animationPlayer = $AnimationPlayer
-onready var machoCoots = $MachoCoots
+onready var playButton = $ButtonHolder/Play
 
 
 
 func _ready():
 	buttonHolder.visible = false# make true after anim
-	machoCoots.visible = false
+	playButton.grab_focus()
 	animationPlayer.play("titleScreenBeginning")
 
 func _process(delta):
