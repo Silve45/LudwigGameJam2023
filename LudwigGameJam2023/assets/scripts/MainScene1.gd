@@ -2,9 +2,13 @@ extends Node2D
 
 
 func _ready():
-	pass
+	$Player.connect("dead", self, "_try_again")
 #	_camera_limit()
 
+func _try_again():
+	$CanvasLayer/DeathScene/AnimationPlayer.play("deathScene")
+	#have animation of coots on ground with try again above
+	
 func _process(delta):
 #	if Input.is_action_just_pressed("debug"):
 #		_debug_dialogic()
@@ -22,7 +26,7 @@ func _debug_dialogic():
 
 func _unpause(timeline_name):
 	get_tree().paused = false
-	print("unpause")
+#	print("unpause")
 
 func _camera_limit():
 	var tilemap_rect = get_parent().get_node("MainScene1/TileMap").get_used_rect()

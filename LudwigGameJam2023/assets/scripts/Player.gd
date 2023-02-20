@@ -6,18 +6,25 @@ onready var hurtBox = $hurtBox
 onready var animationPlayer = $AnimationPlayer
 onready var rayCast = $RayCast2D
 
+var emitDead = false #only using for emit
+signal dead#call it and have scene disapear around player
+
 export (PackedScene) var Hairball: PackedScene = null
 export(float) var speed = 50
 export (bool) var receives_knockback = true
 export (float) var knockback_modifier = 0.1
 
-var dead = false
+var canMove = true#controls hurt and death
+
 
 func _ready():
-	pass # Replace with function body.
+	#reset upon death
+	emitDead = false
+	Globals.health = Globals.maxHealth
+	#done reset upon death
 
 func _process(delta):
-	if dead == false:
+	if canMove == true:
 		_attack()
 		_ranged_attack()
 		_read_input()
@@ -26,7 +33,7 @@ func _process(delta):
 
 
 func _read_input():
-	if dead == false:
+	if canMove == true:
 		var velocity = Vector2.ZERO
 		if Input.is_action_pressed("right"):
 			velocity.x += 1
@@ -81,21 +88,30 @@ func _shoot():
 
 
 func _on_hurtBox_body_entered(body): #for any world hazards
-	receive_knockback(body.global_position, 1)
 	print("world damage")
-	Globals.health -= 1
-
+	_hurt(body)
 
 func _on_hurtBox_area_entered(area): #for any enemy with hitBox area
-	receive_knockback(area.global_position, 1)
 	print("area damage")
+	_hurt(area)
+
+func _hurt(area):
+	receive_knockback(area.global_position, 1)
+	Globals.health -= 1
+	canMove = false
+	animationPlayer.play("hurt")
+	
 
 func _die():
 	if Globals.health == 0:
 		print("die") #will playDeathAnim and restart where you are
-		dead = true
+		if emitDead == false:
+			emit_signal("dead")
+			emitDead = true
+		canMove = false
 		animationPlayer.play("dead")
 		label.set_text("dead")
+		$hurtBox/CollisionShape2D.set_deferred("disabled", true)
 	else:
 		pass
 
@@ -106,3 +122,8 @@ func receive_knockback(damage_source_pos: Vector2, recivied_damage: int):
 		var knockback = knockback_direction * knockback_modifier
 		
 		global_position += knockback
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "hurt":
+		canMove = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/sprites/testSprites/Cat_sprite_sheet.png" type="Texture" id=1]
 [ext_resource path="res://assets/animations/idle_down.tres" type="Animation" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/animations/idle_up.tres" type="Animation" id=10]
 [ext_resource path="res://resources/BitPotion.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://scenes/HairBall.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/animations/hurt.tres" type="Animation" id=13]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6.5, 6.75 )
@@ -41,6 +42,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -153,7 +166,7 @@ collision_mask = 18
 script = ExtResource( 3 )
 Hairball = ExtResource( 12 )
 speed = 150.0
-knockback_modifier = 5.0
+knockback_modifier = 150.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -166,6 +179,7 @@ shape = SubResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
 anims/dead = SubResource( 20 )
+anims/hurt = ExtResource( 13 )
 anims/idle_down = ExtResource( 2 )
 anims/idle_left = ExtResource( 7 )
 anims/idle_right = ExtResource( 5 )
@@ -193,6 +207,7 @@ parameters/idle/blend_position = Vector2( 0.0290792, 0.646707 )
 parameters/walk/blend_position = Vector2( -0.952496, 0.593606 )
 
 [node name="hurtBox" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
@@ -210,5 +225,6 @@ shape = SubResource( 19 )
 [node name="RayCast2D" type="RayCast2D" parent="."]
 cast_to = Vector2( 35.6667, 0 )
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurtBox_area_entered"]
 [connection signal="body_entered" from="hurtBox" to="." method="_on_hurtBox_body_entered"]
