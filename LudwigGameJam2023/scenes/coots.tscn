@@ -42,7 +42,6 @@ offset = Vector2( -192, 0 )
 
 [node name="bottomleg_L" type="Sprite" parent="torso/topleg_L"]
 position = Vector2( -29.999, 330 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 18 )
 centered = false
 offset = Vector2( -120, 0 )
@@ -50,7 +49,6 @@ offset = Vector2( -120, 0 )
 [node name="topleg_R" type="Sprite" parent="torso"]
 position = Vector2( 177, -150 )
 rotation = 0.00192147
-scale = Vector2( 1, 1 )
 z_index = -1
 texture = ExtResource( 16 )
 centered = false
@@ -74,14 +72,12 @@ offset = Vector2( -50, -239 )
 [node name="bottomarm_R" type="Sprite" parent="torso/toparm_R"]
 position = Vector2( 235.583, 750.025 )
 rotation = 0.0444232
-scale = Vector2( 1, 1 )
 texture = ExtResource( 9 )
 centered = false
 offset = Vector2( -199, 0 )
 
 [node name="hand_R" type="Sprite" parent="torso/toparm_R/bottomarm_R"]
 position = Vector2( -103.897, 537.94 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 17 )
 centered = false
 offset = Vector2( -218, -30 )
@@ -89,7 +85,6 @@ offset = Vector2( -218, -30 )
 [node name="toparm_L" type="Sprite" parent="torso"]
 position = Vector2( -364.592, -1180.28 )
 rotation = 0.106846
-scale = Vector2( 1, 1 )
 z_index = 1
 texture = ExtResource( 14 )
 centered = false
