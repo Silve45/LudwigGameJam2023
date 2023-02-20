@@ -1,0 +1,21 @@
+{
+	"color": "#ffa5cec4",
+	"description": "Slime's Friend",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1676756724.json",
+	"mirror_portraits": false,
+	"name": "Ludwig",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": -900,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/sprites/friendIcons/LudwigIcon.png"
+		}
+	],
+	"scale": 30,
+	"theme": ""
+}

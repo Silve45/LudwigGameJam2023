@@ -1,0 +1,21 @@
+{
+	"color": "#ffc81f1f",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1676756794.json",
+	"mirror_portraits": false,
+	"name": "QT",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": -900,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/sprites/friendIcons/qtIcon.png"
+		}
+	],
+	"scale": 30,
+	"theme": ""
+}

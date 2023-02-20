@@ -233,6 +233,7 @@ tile_data = PoolIntArray( 524274, 9, 0, 524275, 9, 0, 524276, 9, 0, 524277, 9, 0
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 514, 290 )
 current = true
+zoom = Vector2( 0.75, 0.75 )
 
 [node name="Label2" type="Label" parent="."]
 margin_left = 166.0

@@ -1,0 +1,21 @@
+{
+	"color": "#ffebff00",
+	"description": "Cat Commando",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1676756818.json",
+	"mirror_portraits": false,
+	"name": "Coots",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": -900,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/sprites/friendIcons/cootsIcon.png"
+		}
+	],
+	"scale": 30,
+	"theme": ""
+}

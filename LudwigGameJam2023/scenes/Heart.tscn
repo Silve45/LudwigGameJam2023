@@ -1,9 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/scripts/Heart.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/testSprites/testHeart.PNG" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/gameSprites/heartSprite/Heart.png" type="Texture" id=2]
 
 [node name="Heart" type="TextureRect"]
 margin_right = 40.0
+rect_min_size = Vector2( 64, 64 )
 texture = ExtResource( 2 )
+expand = true
 script = ExtResource( 1 )

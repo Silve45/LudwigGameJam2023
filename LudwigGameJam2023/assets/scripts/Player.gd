@@ -4,7 +4,9 @@ onready var label = $Label
 onready var animationTree = $AnimationTree
 onready var hurtBox = $hurtBox
 onready var animationPlayer = $AnimationPlayer
+onready var rayCast = $RayCast2D
 
+export (PackedScene) var Hairball: PackedScene = null
 export(float) var speed = 50
 export (bool) var receives_knockback = true
 export (float) var knockback_modifier = 0.1
@@ -15,10 +17,13 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	_read_input()
+	if dead == false:
+		_attack()
+		_ranged_attack()
+		_read_input()
 	_die()
-	_attack()
-	_ranged_attack()
+
+
 
 func _read_input():
 	if dead == false:
@@ -61,9 +66,18 @@ func _ranged_attack():
 	if Input.is_action_just_released("attack2") && Globals.chargeHairBall == 99:
 		print("attack2")
 		Globals.chargeHairBall = 0
+		_shoot()
 	elif Input.is_action_just_released("attack2") && Globals.chargeHairBall < 99:
 		print("attack2Failed")
 		Globals.chargeHairBall = 0
+
+func _shoot():
+	rayCast.enabled = false
+	if Hairball:
+		var bullet : Node2D = Hairball.instance()
+		get_tree().current_scene.add_child(bullet)
+		bullet.global_position = rayCast.global_position
+		bullet.global_rotation = rayCast.rotation
 
 
 func _on_hurtBox_body_entered(body): #for any world hazards

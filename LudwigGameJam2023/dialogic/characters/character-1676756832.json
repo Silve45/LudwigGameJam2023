@@ -1,0 +1,21 @@
+{
+	"color": "#ff2e9955",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1676756832.json",
+	"mirror_portraits": false,
+	"name": "Durs",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": -900,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/sprites/friendIcons/dursIcon.png"
+		}
+	],
+	"scale": 30,
+	"theme": ""
+}

@@ -1,42 +1,71 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Heart.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/friendIcons/cootsIcon.png" type="Texture" id=2]
 [ext_resource path="res://assets/scripts/ui_Left_Container.gd" type="Script" id=3]
+[ext_resource path="res://resources/BitPotion.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
 
 [node name="ui_left_container" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 349.0
+margin_bottom = 192.0
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 113.0
+margin_right = 208.0
+margin_bottom = 193.0
+custom_fonts/font = SubResource( 1 )
+text = "Coots"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 33.0
-margin_top = 38.0
-margin_right = 233.0
-margin_bottom = 102.0
+margin_left = 138.0
+margin_top = 29.0
+margin_right = 342.0
+margin_bottom = 111.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 200.0
+margin_right = 204.0
+margin_bottom = 64.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
 margin_bottom = 64.0
 
 [node name="Heart" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_right = 64.0
+margin_left = 4.0
+margin_right = 68.0
 margin_bottom = 64.0
 whichHeart = 1
 
 [node name="Heart2" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 68.0
-margin_right = 132.0
+margin_left = 72.0
+margin_right = 136.0
 margin_bottom = 64.0
 whichHeart = 2
 
 [node name="Heart3" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 136.0
-margin_right = 200.0
+margin_left = 140.0
+margin_right = 204.0
 margin_bottom = 64.0
 whichHeart = 3
 
+[node name="Sprite" type="Sprite" parent="VBoxContainer/HBoxContainer"]
+position = Vector2( -74, 34 )
+scale = Vector2( 0.1975, 0.194167 )
+texture = ExtResource( 2 )
+
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 margin_top = 68.0
-margin_right = 200.0
+margin_right = 204.0
 margin_bottom = 82.0
-rect_scale = Vector2( 2, 2 )

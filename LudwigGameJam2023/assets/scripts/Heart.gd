@@ -1,8 +1,8 @@
 extends TextureRect
 
 export (int) var whichHeart = 0
-var heartFull = load("res://assets/sprites/testSprites/testHeart.PNG")
-var heartEmpty = load("res://assets/sprites/testSprites/testHeartEmpty.PNG")
+var heartFull = load("res://assets/sprites/gameSprites/heartSprite/Heart.png")
+var heartEmpty = load("res://assets/sprites/gameSprites/heartSprite/Heart_Gone.png")
 func _ready():
 	pass # Replace with function body.
 
