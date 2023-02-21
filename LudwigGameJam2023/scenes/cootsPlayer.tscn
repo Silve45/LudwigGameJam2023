@@ -343,6 +343,7 @@ tracks/12/keys = {
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 Hairball = ExtResource( 16 )
+speed = 250.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2, -2 )
@@ -396,7 +397,6 @@ offset = Vector2( -360, -230 )
 [node name="Arm-R" type="Sprite" parent="Torso"]
 position = Vector2( 138.585, -295.692 )
 scale = Vector2( 0.896637, 0.896638 )
-z_index = -2
 texture = ExtResource( 3 )
 offset = Vector2( 70, 120 )
 
@@ -417,7 +417,6 @@ offset = Vector2( 4.702, 101.673 )
 [node name="Leg-R" type="Sprite" parent="Torso"]
 position = Vector2( 53.2998, -21.321 )
 scale = Vector2( 0.842889, 0.84289 )
-z_index = -1
 texture = ExtResource( 9 )
 centered = false
 offset = Vector2( -80, -26.33 )
@@ -441,3 +440,6 @@ margin_right = 41.0
 margin_bottom = -42.0
 custom_fonts/font = ExtResource( 13 )
 text = "font"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+cast_to = Vector2( 85, 0 )

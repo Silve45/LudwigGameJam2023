@@ -165,7 +165,7 @@ scale = Vector2( 3, 3 )
 collision_mask = 18
 script = ExtResource( 3 )
 Hairball = ExtResource( 12 )
-speed = 150.0
+speed = 250.0
 knockback_modifier = 150.0
 
 [node name="Sprite" type="Sprite" parent="."]

@@ -1,9 +1,9 @@
 extends Node2D
-
+export var finished = false
 
 func _ready():
 	pass
-#	$Player.connect("dead", self, "_try_again")
+	$Player.connect("dead", self, "_try_again")
 #	_camera_limit()
 
 func _try_again():
