@@ -2,7 +2,8 @@ extends Node2D
 
 
 func _ready():
-	$Player.connect("dead", self, "_try_again")
+	pass
+#	$Player.connect("dead", self, "_try_again")
 #	_camera_limit()
 
 func _try_again():
