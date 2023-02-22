@@ -1,0 +1,128 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/fonts/BigFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/animations/Credits.tres" type="Animation" id=2]
+[ext_resource path="res://assets/scripts/Credits.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Credits:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 280.5, 1000 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Final Credits:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Final Credits:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Credits = ExtResource( 2 )
+anims/RESET = SubResource( 1 )
+
+[node name="Credits" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -679.5
+margin_top = 460.0
+margin_right = 679.5
+margin_bottom = 3777.01
+custom_fonts/font = ExtResource( 1 )
+text = "
+CODING AND MAIN LEVEL DESIGN:
+
+-Silve4
+
+ART AND CHARACTER ASSETS:
+
+-KENNALEWI
+
+DIALOGUE, STORY DIRECTION, AND MUSIC COMPOSITION:
+
+-IAN COLE–CARLO
+
+QUALITY CONTROL AND GAME DIRECTION:
+
+-ZYECT
+
+SPECIAL THANKS:
+
+FOR PROVIDING THEIR NAMES AND/OR LIKENESSES
+
+-COOTS
+-DERS
+-LUD
+-QT
+-THE CHAT MODS 
+
+FOR HOSTING THE GAMEJAM
+
+-OTTOMATED
+
+DISCORD
+
+-FOR HOSTING OUR TEAM
+"
+align = 1
+valign = 1
+
+[node name="Final Credits" type="Label" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -305.0
+margin_top = -206.0
+margin_right = 305.0
+margin_bottom = 206.0
+custom_fonts/font = ExtResource( 1 )
+text = "AND YOU
+
+FOR PLAYING THIS GAME
+
+: )"
+align = 1
+valign = 1
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
