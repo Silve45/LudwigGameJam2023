@@ -8,6 +8,12 @@ func _ready():
 	resumeButton.grab_focus()
 	visible = false
 
+#func _disable_buttons():
+#	if visible == false:
+#		resumeButton.disabled = true
+#		quitButton.disabled = true
+		
+
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
 		if notPaused:

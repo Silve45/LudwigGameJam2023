@@ -94,14 +94,13 @@ modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 737, 807 )
 rotation = -1.52367
 
-[node name="topleg_L" parent="CanvasLayer/coots/torso" index="0"]
-position = Vector2( -128, -150 )
-
 [node name="bottomleg_L" parent="CanvasLayer/coots/torso/topleg_L" index="0"]
 position = Vector2( -30, 330 )
+scale = Vector2( 1, 1 )
 
 [node name="topleg_R" parent="CanvasLayer/coots/torso" index="1"]
 position = Vector2( 177, -150 )
+scale = Vector2( 1, 1 )
 
 [node name="bottomleg_R" parent="CanvasLayer/coots/torso/topleg_R" index="0"]
 position = Vector2( -24.9998, 330 )
@@ -111,7 +110,6 @@ position = Vector2( 408.197, -1175.14 )
 
 [node name="bottomarm_R" parent="CanvasLayer/coots/torso/toparm_R" index="0"]
 position = Vector2( 235.583, 750.025 )
-scale = Vector2( 1, 1 )
 
 [node name="hand_R" parent="CanvasLayer/coots/torso/toparm_R/bottomarm_R" index="0"]
 position = Vector2( -103.897, 537.94 )
@@ -119,10 +117,13 @@ scale = Vector2( 1, 1 )
 
 [node name="toparm_L" parent="CanvasLayer/coots/torso" index="3"]
 position = Vector2( -364.592, -1180.28 )
-scale = Vector2( 1, 1 )
 
 [node name="bottomArm_L" parent="CanvasLayer/coots/torso/toparm_L" index="0"]
 position = Vector2( -287.676, 798.606 )
+scale = Vector2( 1, 1 )
+
+[node name="hand_L" parent="CanvasLayer/coots/torso/toparm_L/bottomArm_L" index="0"]
+position = Vector2( 221.315, 507.896 )
 scale = Vector2( 1, 1 )
 
 [node name="resting_face" parent="CanvasLayer/coots/torso/head" index="3"]

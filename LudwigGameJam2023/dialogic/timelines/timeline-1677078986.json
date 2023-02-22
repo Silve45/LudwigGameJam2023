@@ -1,0 +1,29 @@
+{
+	"events": [
+		{
+			"character": "character-1676756724.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "BOYS! \nTODAY, WE ARE GOING TO WAR\nWITH WHO, YOU MIGHT ASK"
+		},
+		{
+			"emit_signal": "_point",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1676756724.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "WITH THIS WASHED UP FLUFF BALL\nTHE PLAN IS SIMPLE\n3\n2\n1"
+		},
+		{
+			"emit_signal": "begin_fight",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1677078986.json",
+		"name": "ludwigBattle"
+	}
+}

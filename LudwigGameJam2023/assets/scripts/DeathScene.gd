@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready():
-	pass # Replace with function body.
+	visible = false
 
 func _process(delta):
 	pass

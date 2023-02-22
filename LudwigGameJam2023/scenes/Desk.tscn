@@ -1,17 +1,18 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/Pause.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/hazards/FollowPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/LudwigHealthBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/DeathScene.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/PracticeAttackArea.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/hazards/walkFowardOnly.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sprites/gameSprites/ludwigSprite/go_ludwig.png" type="Texture" id=4]
+[ext_resource path="res://assets/animations/GO.tres" type="Animation" id=5]
 [ext_resource path="res://scenes/ui_Left_Container.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/cootsPlayer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/sprites/tileSprites/deskImage.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/testSprites/TX Props.png" type="Texture" id=9]
 [ext_resource path="res://resources/fonts/BigFont.tres" type="DynamicFont" id=10]
-[ext_resource path="res://assets/scripts/MainScene1.gd" type="Script" id=11]
-[ext_resource path="res://scenes/hazards/Spawner.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/scripts/Desk.gd" type="Script" id=11]
+[ext_resource path="res://scenes/Ludwig.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/animations/talk.tres" type="Animation" id=14]
 
 [sub_resource type="Shader" id=11]
 code = "/*
@@ -39,6 +40,21 @@ void fragment()
 [sub_resource type="ShaderMaterial" id=12]
 shader = SubResource( 11 )
 shader_param/amount = 300
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("bottomHalf:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 20, 13.3333 ) ]
+}
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -106,6 +122,21 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
 [node name="MainScene1" type="Node2D"]
 script = ExtResource( 11 )
 
@@ -114,6 +145,14 @@ material = SubResource( 12 )
 position = Vector2( 497, 408 )
 scale = Vector2( 1.14101, 1.1704 )
 texture = ExtResource( 8 )
+
+[node name="Ludwig" parent="." instance=ExtResource( 13 )]
+pause_mode = 2
+position = Vector2( 460, 124 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ludwig"]
+anims/RESET = SubResource( 13 )
+anims/talk = ExtResource( 14 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 9 )
@@ -153,39 +192,45 @@ __meta__ = {
 }
 
 [node name="hazardMap" type="TileMap" parent="."]
+position = Vector2( -1, 0 )
 tile_set = SubResource( 6 )
 collision_layer = 4
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 458756, 0, 0 )
+tile_data = PoolIntArray( 458752, 0, 0 )
 
 [node name="heartLayer" type="CanvasLayer" parent="."]
 
 [node name="HeartContainer" parent="heartLayer" instance=ExtResource( 6 )]
 
-[node name="PracticeAttackArea" parent="." instance=ExtResource( 4 )]
-position = Vector2( 479, 560 )
-
-[node name="walkFowardOnly" parent="." instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 157, 516 )
-right = false
-
-[node name="FollowPlayer" parent="." instance=ExtResource( 2 )]
-visible = false
-position = Vector2( 724, 432 )
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 4
+layer = 3
 
 [node name="DeathScene" parent="CanvasLayer" instance=ExtResource( 3 )]
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 76, 580 )
+position = Vector2( 135, 528 )
 
-[node name="Spawner" parent="." instance=ExtResource( 12 )]
-position = Vector2( 38, 481 )
-spawnIN = ExtResource( 5 )
-entityRight = false
+[node name="LudHealthBar" type="CanvasLayer" parent="."]
 
+[node name="LudwigHealthBar" parent="LudHealthBar" instance=ExtResource( 2 )]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -78.0
+margin_top = -5.0
+margin_right = 2082.0
+margin_bottom = 1615.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/GO = ExtResource( 5 )
+anims/RESET = SubResource( 14 )
+
+[editable path="Ludwig"]
 [editable path="PauseLayer"]

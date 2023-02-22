@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://resources/shaders/PixelShader.tres" type="Shader" id=1]
+[ext_resource path="res://assets/sprites/gameSprites/ludwigSprite/bottomHalf.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/gameSprites/ludwigSprite/topHalf.png" type="Texture" id=3]
+[ext_resource path="res://assets/scripts/Ludwig.gd" type="Script" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/amount = 80
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 923.06
+
+[node name="Ludwig" type="Node2D"]
+material = SubResource( 1 )
+position = Vector2( 2.00003, 2 )
+scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 4 )
+
+[node name="topHalf" type="Sprite" parent="."]
+use_parent_material = true
+texture = ExtResource( 3 )
+
+[node name="bottomHalf" type="Sprite" parent="."]
+use_parent_material = true
+position = Vector2( 20, 13.3333 )
+texture = ExtResource( 2 )
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2( -6.66676, -373.333 )
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

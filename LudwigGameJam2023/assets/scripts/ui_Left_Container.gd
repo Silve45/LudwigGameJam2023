@@ -11,7 +11,7 @@ func _process(delta):
 
 func _full_charge():
 	#in full release chargeBar will have its own sprite 
-	if Globals.chargeHairBall == 99:
+	if Globals.chargeHairBall == 100:
 		progressBar.modulate = Color.red
 	else:
 		progressBar.modulate = Color.white

@@ -1,0 +1,49 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676756724.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1676756724.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ah, so the kitty has come to be clickbait once more\nYour too old, Coots! Youtube wants young blood\nand I already bled you dry \nOh? You're here for Ders?\nHeh"
+		},
+		{
+			"emit_signal": "_face_point",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1676756724.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Well if you want her you're going to have to go through me first\nAnd we're doing this Nippon-des style"
+		},
+		{
+			"emit_signal": "_change_scenes",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1677078455.json",
+		"name": "deskTimeline"
+	}
+}

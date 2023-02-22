@@ -18,7 +18,7 @@ func _process(delta):
 	_move_stars(delta)
 
 func _on_Play_pressed(): #this will have to be changed
-	get_tree().change_scene("res://scenes/MainScene1.tscn")#will be changed to cage 
+	get_tree().change_scene("res://scenes/Desk.tscn")#will be changed to cage 
 
 func _move_stars(delta):
 	$StarBackground/StarGround.motion_offset.y += starSpeed * delta

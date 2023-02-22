@@ -64,17 +64,17 @@ func _attack():
 
 func _ranged_attack():
 	if Input.is_action_pressed("attack2"):
-		if Globals.chargeHairBall < 99:
-			Globals.chargeHairBall += 1
-		elif Globals.chargeHairBall >= 99:
-			Globals.chargeHairBall = 99
+		if Globals.chargeHairBall < 100:
+			Globals.chargeHairBall += 1.8
+		elif Globals.chargeHairBall >= 100:
+			Globals.chargeHairBall = 100
 		print("hairBall is at ", Globals.chargeHairBall)
 
-	if Input.is_action_just_released("attack2") && Globals.chargeHairBall == 99:
+	if Input.is_action_just_released("attack2") && Globals.chargeHairBall == 100:
 		print("attack2")
 		Globals.chargeHairBall = 0
 		_shoot()
-	elif Input.is_action_just_released("attack2") && Globals.chargeHairBall < 99:
+	elif Input.is_action_just_released("attack2") && Globals.chargeHairBall < 100:
 		print("attack2Failed")
 		Globals.chargeHairBall = 0
 
