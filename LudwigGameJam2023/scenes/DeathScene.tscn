@@ -103,7 +103,7 @@ position = Vector2( 177, -150 )
 scale = Vector2( 1, 1 )
 
 [node name="bottomleg_R" parent="CanvasLayer/coots/torso/topleg_R" index="0"]
-position = Vector2( -24.9998, 330 )
+position = Vector2( -25, 330 )
 
 [node name="toparm_R" parent="CanvasLayer/coots/torso" index="2"]
 position = Vector2( 408.197, -1175.14 )
@@ -113,7 +113,6 @@ position = Vector2( 235.583, 750.025 )
 
 [node name="hand_R" parent="CanvasLayer/coots/torso/toparm_R/bottomarm_R" index="0"]
 position = Vector2( -103.897, 537.94 )
-scale = Vector2( 1, 1 )
 
 [node name="toparm_L" parent="CanvasLayer/coots/torso" index="3"]
 position = Vector2( -364.592, -1180.28 )
@@ -123,7 +122,7 @@ position = Vector2( -287.676, 798.606 )
 scale = Vector2( 1, 1 )
 
 [node name="hand_L" parent="CanvasLayer/coots/torso/toparm_L/bottomArm_L" index="0"]
-position = Vector2( 221.315, 507.896 )
+position = Vector2( 221.315, 507.895 )
 scale = Vector2( 1, 1 )
 
 [node name="resting_face" parent="CanvasLayer/coots/torso/head" index="3"]

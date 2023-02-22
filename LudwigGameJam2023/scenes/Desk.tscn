@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/Pause.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/LudwigHealthBar.tscn" type="PackedScene" id=2]
@@ -11,8 +11,12 @@
 [ext_resource path="res://assets/sprites/testSprites/TX Props.png" type="Texture" id=9]
 [ext_resource path="res://resources/fonts/BigFont.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/scripts/Desk.gd" type="Script" id=11]
+[ext_resource path="res://scenes/Hand.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/Ludwig.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/animations/talk.tres" type="Animation" id=14]
+[ext_resource path="res://assets/animations/Hand_Slam.tres" type="Animation" id=15]
+[ext_resource path="res://assets/animations/hand_forward.tres" type="Animation" id=16]
+[ext_resource path="res://resources/shaders/PixelShader.tres" type="Shader" id=17]
 
 [sub_resource type="Shader" id=11]
 code = "/*
@@ -136,6 +140,34 @@ tracks/0/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1164, 463 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hand:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="ShaderMaterial" id=15]
+shader = ExtResource( 17 )
+shader_param/amount = 80
 
 [node name="MainScene1" type="Node2D"]
 script = ExtResource( 11 )
@@ -203,17 +235,18 @@ tile_data = PoolIntArray( 458752, 0, 0 )
 
 [node name="HeartContainer" parent="heartLayer" instance=ExtResource( 6 )]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="deathScene" type="CanvasLayer" parent="."]
 layer = 3
 
-[node name="DeathScene" parent="CanvasLayer" instance=ExtResource( 3 )]
-
-[node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 135, 528 )
+[node name="DeathScene" parent="deathScene" instance=ExtResource( 3 )]
 
 [node name="LudHealthBar" type="CanvasLayer" parent="."]
 
 [node name="LudwigHealthBar" parent="LudHealthBar" instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 135, 528 )
+knockback_modifier = 50.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -230,7 +263,25 @@ texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/GO = ExtResource( 5 )
+"anims/Hand Slam" = ExtResource( 15 )
+anims/Hand_Slam = ExtResource( 15 )
 anims/RESET = SubResource( 14 )
+anims/hand_forward = ExtResource( 16 )
+
+[node name="Hand" parent="." instance=ExtResource( 12 )]
+material = SubResource( 15 )
+position = Vector2( 1164, 463 )
+
+[node name="changeBack" type="Timer" parent="."]
+one_shot = true
+
+[node name="state_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="changeBack" to="." method="_on_changeBack_timeout"]
+[connection signal="timeout" from="state_timer" to="." method="_on_state_timer_timeout"]
 
 [editable path="Ludwig"]
 [editable path="PauseLayer"]

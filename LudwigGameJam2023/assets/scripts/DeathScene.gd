@@ -1,14 +1,21 @@
 extends Control
 
+var doOnce = false
 
 func _ready():
 	visible = false
 
-func _process(delta):
-	pass
-#	if Input.is_action_just_pressed("debug"):
-#		$AnimationPlayer.play("deathScene")
 
+func _process(delta):
+	_visble()
+
+func _visble():
+	if visible == true && doOnce == false:
+		$VBoxContainer/RestartLevel.grab_focus()
+		doOnce = true
+	elif visible == false:
+		pass
+		
 func _on_RestartLevel_pressed():
 	get_tree().reload_current_scene()
 
