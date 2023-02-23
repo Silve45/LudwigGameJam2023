@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
-onready var obj = get_node("../Player")
+onready var obj = get_parent().get_parent().get_parent().get_parent().get_node("Player")
+onready var label = $Label
+onready var despawnTimer = $despawn_timer
 #export (PackedScene) var obj: PackedScene = null
 export (int) var speed = 125
 
@@ -12,6 +14,9 @@ static func node_exists(node):
 		node is Node and node.is_inside_tree():
 		return true
 	return false
+
+func _process(delta):
+	label.set_text(str(int(despawnTimer.time_left)))
 
 func _physics_process(delta):
 	if node_exists(obj) == true:
@@ -31,4 +36,8 @@ func _blow_up():
 	queue_free()
 
 func _on_collisionBox_area_entered(area):
+	_blow_up()
+
+
+func _on_despawn_timer_timeout():
 	_blow_up()

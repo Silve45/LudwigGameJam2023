@@ -55,6 +55,14 @@ focus_neighbour_top = NodePath("../Quit")
 custom_fonts/font = ExtResource( 3 )
 text = "Resume"
 
+[node name="MainMenu" type="Button" parent="Pause/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 494.0
+margin_right = 211.0
+margin_bottom = 580.0
+focus_neighbour_top = NodePath("../Quit")
+custom_fonts/font = ExtResource( 3 )
+text = "Main Menu"
+
 [node name="Quit" type="Button" parent="Pause/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 600.0
 margin_right = 211.0
@@ -67,4 +75,5 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="Pause/MarginContainer/HBoxContainer/VBoxContainer/Resume" to="Pause" method="_on_Resume_pressed"]
+[connection signal="pressed" from="Pause/MarginContainer/HBoxContainer/VBoxContainer/MainMenu" to="Pause" method="_on_MainMenu_pressed"]
 [connection signal="pressed" from="Pause/MarginContainer/HBoxContainer/VBoxContainer/Quit" to="Pause" method="_on_Quit_pressed"]

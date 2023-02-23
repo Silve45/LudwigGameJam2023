@@ -3,15 +3,22 @@ export var finished = false
 onready var ludwigAnimation = $Ludwig/AnimationPlayer
 onready var animationPlayer = $AnimationPlayer
 onready var stateTimer = $state_timer
+onready var hand = $Hand/Hand
+onready var ludwigEyeAnimation = $newLudwig/AnimationPlayer
+onready var spawner1 = $spawners/Spawner
+onready var spawner2 = $spawners/Spawner2
+onready var spawner3 = $spawners/Spawner3
 
-var handRegular = load("res://assets/sprites/gameSprites/ludwigSprite/LudwigHand.png")
-var handSnap = load("res://assets/sprites/gameSprites/ludwigSprite/SnapLudwig.png")
+
+var handRegular = load("res://assets/sprites/gameSprites/LudwigHands/Open-Hand.png")
+var handSnap = load("res://assets/sprites/gameSprites/LudwigHands/Snap2.png")
+var handFist = load("res://assets/sprites/gameSprites/LudwigHands/Fist.png")
 
 func _ready():
 	$Player.connect("dead", self, "_try_again")
 	Globals.ludwigsHealth += Globals.maxLudwigHealth
 	$TextureRect.visible = false
-#	_beginning_dialogic()
+	_beginning_dialogic()
 #	_camera_limit()
 
 
@@ -30,11 +37,14 @@ func _process(delta):
 		_roll_state()
 
 func _hand_snap():
-	$Hand.set_texture(handSnap)
+	hand.set_texture(handSnap)
+	spawner1._spawn_enemy()
+	spawner2._spawn_enemy()
+	spawner3._spawn_enemy()
 	$changeBack.start()
 
 func _on_changeBack_timeout():
-	$Hand.set_texture(handRegular)
+	hand.set_texture(handRegular)
 	stateTimer.start()
 
 
@@ -45,22 +55,28 @@ func _roll_state():
 	var value
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var pickedNumber = rng.randi_range(0, 2)
+	var pickedNumber = rng.randi_range(0, 4)
 	if pickedNumber == 0:
 		animationPlayer.play("hand_forward")
 		print("state 1")
 	if pickedNumber == 1:
 		animationPlayer.play("Hand_Slam")
+		hand.set_texture(handFist)
 		print("state 2")
 	if pickedNumber == 2:
 		_hand_snap()
 		print("state 3")
+	if pickedNumber == 3:
+		animationPlayer.play("hand_forward_bottom")
+	if pickedNumber == 4:
+		animationPlayer.play("hand_forward_top")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "hand_forward":
-		stateTimer.start()
-	if anim_name == "Hand_Slam":
-		stateTimer.start()
+#	if anim_name == "hand_forward":
+#		stateTimer.start()
+#	if anim_name == "Hand_Slam":
+#		stateTimer.start()
+	stateTimer.start()
 
 
 
@@ -78,6 +94,7 @@ func _beginning_dialogic():
 func _begin_fight(argument):#has to be the word argument
 	if argument == 'begin_fight':
 		$AnimationPlayer.play("GO")
+		stateTimer.start()
 		print("Begin Fight")
 	 #just have hands start and flash fight onScreen
 
@@ -100,3 +117,34 @@ func _camera_limit():
 	$Camera2D.limit_top = tilemap_rect.position.y * tilemap_cell_size.y 
 	$Camera2D.limit_bottom = tilemap_rect.end.y * tilemap_cell_size.y
 
+
+var eyeFoward = true
+var eyeLeft = false
+var eyeRight = false
+
+func _on_frontArea_body_entered(body):
+	if eyeLeft == false && eyeRight == false:
+		ludwigEyeAnimation.play("eyesFoward")
+	if eyeLeft == true:
+		ludwigEyeAnimation.play_backwards("eyesLeft")
+		eyeLeft = false
+	if eyeRight == true:
+		ludwigEyeAnimation.play_backwards("eyesRight")
+		eyeRight = false
+	eyeFoward = true
+
+
+func _on_leftArea_body_entered(body):
+	if eyeLeft == false:
+		ludwigEyeAnimation.play("eyesLeft")
+	eyeLeft = true
+	eyeFoward = false
+	eyeRight = false
+
+
+func _on_rightArea_body_entered(body):
+	if eyeRight == false:
+		ludwigEyeAnimation.play("eyesRight")
+	eyeRight = true
+	eyeFoward = false
+	eyeLeft = false

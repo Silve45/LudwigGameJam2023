@@ -10,10 +10,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.9, 2.2, 2.5, 2.8, 3.2, 3.5, 4.2, 4.4, 5.1, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.9, 2.2, 2.5, 2.8, 3.1, 3.5, 4, 4.2, 4.5, 5.2, 5.4, 6.1, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1164, 463 ), Vector2( 1127, 95 ), Vector2( 1119, 594 ), Vector2( 1127, 95 ), Vector2( 844, 98 ), Vector2( 819, 622 ), Vector2( 844, 98 ), Vector2( 476, 95 ), Vector2( 479, 660 ), Vector2( 476, 95 ), Vector2( -105, 105 ), Vector2( -115, 651 ), Vector2( -115, 651 ), Vector2( -105, 105 ), Vector2( 1108, 118 ), Vector2( 1164, 463 ) ]
+"values": [ Vector2( 1000, 500 ), Vector2( 1127, 95 ), Vector2( 1119, 594 ), Vector2( 1127, 95 ), Vector2( 844, 98 ), Vector2( 819, 622 ), Vector2( 844, 98 ), Vector2( 476, 95 ), Vector2( 479, 660 ), Vector2( 476, 95 ), Vector2( 165, 95 ), Vector2( 165, 647 ), Vector2( 165, 95 ), Vector2( -105, 105 ), Vector2( -115, 651 ), Vector2( -115, 651 ), Vector2( -105, 105 ), Vector2( 1108, 118 ), Vector2( 1000, 500 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Hand:rotation_degrees")
@@ -22,7 +22,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 4.5, 6 ),
+"times": PoolRealArray( 0, 0.3, 5.4, 6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -90.1, -90.1, 0.0 ]

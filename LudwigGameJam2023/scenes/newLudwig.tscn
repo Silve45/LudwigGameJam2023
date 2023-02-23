@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/scripts/newLudwig.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/gameSprites/LudwigFace/Eye-Whites.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/gameSprites/LudwigFace/Lud-Normal.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/gameSprites/LudwigFace/Irises.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/gameSprites/LudwigFace/Tears.png" type="Texture" id=5]
+[ext_resource path="res://assets/animations/eyesLeft.tres" type="Animation" id=6]
+[ext_resource path="res://assets/animations/eyesFoward.tres" type="Animation" id=7]
+[ext_resource path="res://assets/animations/eyesRight.tres" type="Animation" id=8]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("eyes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[node name="newLudwig" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="eyeWhites" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="eyes" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+
+[node name="face" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="tears" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/eyesFoward = ExtResource( 7 )
+anims/eyesLeft = ExtResource( 6 )
+anims/eyesRight = ExtResource( 8 )

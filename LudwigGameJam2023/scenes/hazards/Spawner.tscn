@@ -4,6 +4,7 @@
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource( 1 )
+expObj = "Player"
 
 [node name="SpawnNode" type="Node2D" parent="."]
 

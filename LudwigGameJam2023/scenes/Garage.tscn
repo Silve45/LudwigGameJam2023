@@ -1,24 +1,26 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/Pause.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui_Left_Container.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/hazards/walkFowardOnly.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scripts/Garage.gd" type="Script" id=3]
 [ext_resource path="res://scenes/DeathScene.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/PracticeAttackArea.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/hazards/FollowPlayer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/scripts/garageCamera.gd" type="Script" id=5]
+[ext_resource path="res://scenes/QtIcon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Portal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/sprites/tileSprites/deskImage.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/gameSprites/GarageScene/GarageScene/Wall.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/gameSprites/GarageScene/GarageScene/LightOverlay.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/gameSprites/GarageScene/GarageScene/Floor.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/gameSprites/GarageScene/GarageScene/DarknessOverlay.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/testSprites/TX Props.png" type="Texture" id=13]
-[ext_resource path="res://assets/scripts/MainScene1.gd" type="Script" id=14]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=15]
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="TileSet" id=9]
+[sub_resource type="TileSet" id=14]
 0/name = "deskImage.png 0"
 0/texture = ExtResource( 8 )
 0/tex_offset = Vector2( 0, 0 )
@@ -29,9 +31,16 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 13 )
 0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 13 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 0/z_index = 0
 1/name = "deskImage.png 1"
 1/texture = ExtResource( 8 )
@@ -108,30 +117,51 @@ void fragment()
 shader = SubResource( 11 )
 shader_param/amount = 40
 
+[sub_resource type="Animation" id=15]
+length = 0.001
+
+[sub_resource type="Animation" id=16]
+resource_name = "qtIconUpAndDown"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("QtIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 310, 648 ), Vector2( 310, 670 ) ]
+}
+
 [node name="MainScene1" type="Node2D"]
-script = ExtResource( 14 )
+script = ExtResource( 3 )
 
 [node name="Wall" type="Sprite" parent="."]
-position = Vector2( 496, 386 )
-scale = Vector2( 0.75, 0.75 )
+position = Vector2( 2323, 386 )
+scale = Vector2( 2.65313, 0.75 )
 texture = ExtResource( 9 )
 
 [node name="Floor" type="Sprite" parent="."]
-position = Vector2( 495, 677 )
-scale = Vector2( 0.75, 0.75 )
+position = Vector2( 2322, 677 )
+scale = Vector2( 2.65313, 0.75 )
 texture = ExtResource( 11 )
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 9 )
+tile_set = SubResource( 14 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
+collision_layer = 0
 format = 1
-tile_data = PoolIntArray( 1114105, 1, 0, 1114106, 1, 0, 1114107, 1, 0, 1114108, 1, 0, 1114109, 1, 0, 1114110, 1, 0, 1114111, 1, 0, 1048576, 1, 0, 1048577, 1, 0, 1048578, 1, 0, 1048579, 1, 0, 1048580, 1, 0, 1048581, 1, 0, 1048582, 1, 0, 1048583, 1, 0, 1048584, 1, 0, 1048585, 1, 0, 1048586, 1, 0, 1048587, 1, 0, 1048588, 1, 0, 1048589, 1, 0, 1048590, 1, 0, 1048591, 1, 0, 1048592, 1, 0, 1048593, 1, 0, 1048594, 1, 0, 1048595, 1, 0, 1048596, 1, 0, 1048597, 1, 0, 1048598, 1, 0, 1048599, 1, 0, 1048600, 1, 0, 1048601, 1, 0, 1048602, 1, 0, 1048603, 1, 0, 1048604, 1, 0, 1048605, 1, 0, 1048606, 1, 0, 1048607, 1, 0, 1048608, 1, 0, 1048609, 1, 0, 1048610, 1, 0, 1048611, 1, 0, 1048612, 1, 0, 1048613, 1, 0, 1179641, 1, 0, 1179642, 0, 0, 1179643, 0, 0, 1179644, 0, 0, 1179645, 0, 0, 1179646, 0, 0, 1179647, 0, 0, 1114112, 0, 0, 1114113, 0, 0, 1114114, 0, 0, 1114115, 0, 0, 1114116, 0, 0, 1114117, 0, 0, 1114118, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114124, 0, 0, 1114125, 0, 0, 1114126, 0, 0, 1114127, 0, 0, 1114128, 0, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114133, 0, 0, 1114134, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114138, 0, 0, 1114139, 0, 0, 1114140, 0, 0, 1114141, 0, 0, 1114142, 0, 0, 1114143, 0, 0, 1114144, 0, 0, 1114145, 0, 0, 1114146, 0, 0, 1114147, 0, 0, 1114148, 0, 0, 1114149, 1, 0, 1245177, 1, 0, 1245178, 0, 0, 1245179, 0, 0, 1245180, 0, 0, 1245181, 0, 0, 1245182, 0, 0, 1245183, 0, 0, 1179648, 0, 0, 1179649, 0, 0, 1179650, 0, 0, 1179651, 0, 0, 1179652, 0, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 0, 0, 1179673, 0, 0, 1179674, 0, 0, 1179675, 0, 0, 1179676, 0, 0, 1179677, 0, 0, 1179678, 0, 0, 1179679, 0, 0, 1179680, 0, 0, 1179681, 0, 0, 1179682, 0, 0, 1179683, 0, 0, 1179684, 0, 0, 1179685, 1, 0, 1310713, 1, 0, 1310714, 0, 0, 1310715, 0, 0, 1310716, 0, 0, 1310717, 0, 0, 1310718, 0, 0, 1310719, 0, 0, 1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1245202, 0, 0, 1245203, 0, 0, 1245204, 0, 0, 1245205, 0, 0, 1245206, 0, 0, 1245207, 0, 0, 1245208, 0, 0, 1245209, 0, 0, 1245210, 0, 0, 1245211, 0, 0, 1245212, 0, 0, 1245213, 0, 0, 1245214, 0, 0, 1245215, 0, 0, 1245216, 0, 0, 1245217, 0, 0, 1245218, 0, 0, 1245219, 0, 0, 1245220, 0, 0, 1245221, 1, 0, 1376249, 1, 0, 1376250, 0, 0, 1376251, 0, 0, 1376252, 0, 0, 1376253, 0, 0, 1376254, 0, 0, 1376255, 0, 0, 1310720, 0, 0, 1310721, 0, 0, 1310722, 0, 0, 1310723, 0, 0, 1310724, 0, 0, 1310725, 0, 0, 1310726, 0, 0, 1310727, 0, 0, 1310728, 0, 0, 1310729, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0, 1310733, 0, 0, 1310734, 0, 0, 1310735, 0, 0, 1310736, 0, 0, 1310737, 0, 0, 1310738, 0, 0, 1310739, 0, 0, 1310740, 0, 0, 1310741, 0, 0, 1310742, 0, 0, 1310743, 0, 0, 1310744, 0, 0, 1310745, 0, 0, 1310746, 0, 0, 1310747, 0, 0, 1310748, 0, 0, 1310749, 0, 0, 1310750, 0, 0, 1310751, 0, 0, 1310752, 0, 0, 1310753, 0, 0, 1310754, 0, 0, 1310755, 0, 0, 1310756, 0, 0, 1310757, 1, 0, 1441785, 1, 0, 1441786, 0, 0, 1441787, 0, 0, 1441788, 0, 0, 1441789, 0, 0, 1441790, 0, 0, 1441791, 0, 0, 1376256, 0, 0, 1376257, 0, 0, 1376258, 0, 0, 1376259, 0, 0, 1376260, 0, 0, 1376261, 0, 0, 1376262, 0, 0, 1376263, 0, 0, 1376264, 0, 0, 1376265, 0, 0, 1376266, 0, 0, 1376267, 0, 0, 1376268, 0, 0, 1376269, 0, 0, 1376270, 0, 0, 1376271, 0, 0, 1376272, 0, 0, 1376273, 0, 0, 1376274, 0, 0, 1376275, 0, 0, 1376276, 0, 0, 1376277, 0, 0, 1376278, 0, 0, 1376279, 0, 0, 1376280, 0, 0, 1376281, 0, 0, 1376282, 0, 0, 1376283, 0, 0, 1376284, 0, 0, 1376285, 0, 0, 1376286, 0, 0, 1376287, 0, 0, 1376288, 0, 0, 1376289, 0, 0, 1376290, 0, 0, 1376291, 0, 0, 1376292, 0, 0, 1376293, 1, 0, 1507321, 1, 0, 1507322, 0, 0, 1507323, 0, 0, 1507324, 0, 0, 1507325, 0, 0, 1507326, 0, 0, 1507327, 0, 0, 1441792, 0, 0, 1441793, 0, 0, 1441794, 0, 0, 1441795, 0, 0, 1441796, 0, 0, 1441797, 0, 0, 1441798, 0, 0, 1441799, 0, 0, 1441800, 0, 0, 1441801, 0, 0, 1441802, 0, 0, 1441803, 0, 0, 1441804, 0, 0, 1441805, 0, 0, 1441806, 0, 0, 1441807, 0, 0, 1441808, 0, 0, 1441809, 0, 0, 1441810, 0, 0, 1441811, 0, 0, 1441812, 0, 0, 1441813, 0, 0, 1441814, 0, 0, 1441815, 0, 0, 1441816, 0, 0, 1441817, 0, 0, 1441818, 0, 0, 1441819, 0, 0, 1441820, 0, 0, 1441821, 0, 0, 1441822, 0, 0, 1441823, 0, 0, 1441824, 0, 0, 1441825, 0, 0, 1441826, 0, 0, 1441827, 0, 0, 1441828, 0, 0, 1441829, 1, 0, 1572857, 1, 0, 1572858, 0, 0, 1572859, 0, 0, 1572860, 0, 0, 1572861, 0, 0, 1572862, 0, 0, 1572863, 0, 0, 1507328, 0, 0, 1507329, 0, 0, 1507330, 0, 0, 1507331, 0, 0, 1507332, 0, 0, 1507333, 0, 0, 1507334, 0, 0, 1507335, 0, 0, 1507336, 0, 0, 1507337, 0, 0, 1507338, 0, 0, 1507339, 0, 0, 1507340, 0, 0, 1507341, 0, 0, 1507342, 0, 0, 1507343, 0, 0, 1507344, 0, 0, 1507345, 0, 0, 1507346, 0, 0, 1507347, 0, 0, 1507348, 0, 0, 1507349, 0, 0, 1507350, 0, 0, 1507351, 0, 0, 1507352, 0, 0, 1507353, 0, 0, 1507354, 0, 0, 1507355, 0, 0, 1507356, 0, 0, 1507357, 0, 0, 1507358, 0, 0, 1507359, 0, 0, 1507360, 0, 0, 1507361, 0, 0, 1507362, 0, 0, 1507363, 0, 0, 1507364, 0, 0, 1507365, 1, 0, 1638393, 1, 0, 1638394, 1, 0, 1638395, 1, 0, 1638396, 1, 0, 1638397, 1, 0, 1638398, 1, 0, 1638399, 1, 0, 1572864, 1, 0, 1572865, 1, 0, 1572866, 1, 0, 1572867, 1, 0, 1572868, 1, 0, 1572869, 1, 0, 1572870, 1, 0, 1572871, 1, 0, 1572872, 1, 0, 1572873, 1, 0, 1572874, 1, 0, 1572875, 1, 0, 1572876, 1, 0, 1572877, 1, 0, 1572878, 1, 0, 1572879, 1, 0, 1572880, 1, 0, 1572881, 1, 0, 1572882, 1, 0, 1572883, 1, 0, 1572884, 1, 0, 1572885, 1, 0, 1572886, 1, 0, 1572887, 1, 0, 1572888, 1, 0, 1572889, 1, 0, 1572890, 1, 0, 1572891, 1, 0, 1572892, 1, 0, 1572893, 1, 0, 1572894, 1, 0, 1572895, 1, 0, 1572896, 1, 0, 1572897, 1, 0, 1572898, 1, 0, 1572899, 1, 0, 1572900, 1, 0, 1572901, 1, 0 )
+tile_data = PoolIntArray( 1048569, 0, 0, 1048570, 0, 0, 1048571, 0, 0, 1048572, 0, 0, 1048573, 0, 0, 1048574, 0, 0, 1048575, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0, 983062, 0, 0, 983063, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983067, 0, 0, 983068, 0, 0, 983069, 0, 0, 983070, 0, 0, 983071, 0, 0, 983072, 0, 0, 983073, 0, 0, 983074, 0, 0, 983075, 0, 0, 983076, 0, 0, 983077, 0, 0, 1114105, 0, 0, 1048613, 0, 0, 1179641, 0, 0, 1114149, 0, 0, 1245177, 0, 0, 1179685, 0, 0, 1310713, 0, 0, 1245221, 0, 0, 1376249, 0, 0, 1310757, 0, 0, 1441785, 0, 0, 1376293, 0, 0, 1507321, 0, 0, 1441829, 0, 0, 1572857, 0, 0, 1507365, 0, 0, 1638393, 0, 0, 1638394, 0, 0, 1638395, 0, 0, 1638396, 0, 0, 1638397, 0, 0, 1638398, 0, 0, 1638399, 0, 0, 1572864, 0, 0, 1572865, 0, 0, 1572866, 0, 0, 1572867, 0, 0, 1572868, 0, 0, 1572869, 0, 0, 1572870, 0, 0, 1572871, 0, 0, 1572872, 0, 0, 1572873, 0, 0, 1572874, 0, 0, 1572875, 0, 0, 1572876, 0, 0, 1572877, 0, 0, 1572878, 0, 0, 1572879, 0, 0, 1572880, 0, 0, 1572881, 0, 0, 1572882, 0, 0, 1572883, 0, 0, 1572884, 0, 0, 1572885, 0, 0, 1572886, 0, 0, 1572887, 0, 0, 1572888, 0, 0, 1572889, 0, 0, 1572890, 0, 0, 1572891, 0, 0, 1572892, 0, 0, 1572893, 0, 0, 1572894, 0, 0, 1572895, 0, 0, 1572896, 0, 0, 1572897, 0, 0, 1572898, 0, 0, 1572899, 0, 0, 1572900, 0, 0, 1572901, 0, 0 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="garageCamera" type="Camera2D" parent="."]
 position = Vector2( 496, 384 )
 current = true
 zoom = Vector2( 0.75, 0.75 )
+script = ExtResource( 5 )
 
 [node name="PauseLayer" parent="." instance=ExtResource( 1 )]
 
@@ -145,41 +175,41 @@ tile_set = SubResource( 6 )
 collision_layer = 4
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 655358, 0, 0 )
 
 [node name="heartLayer" type="CanvasLayer" parent="."]
 
 [node name="HeartContainer" parent="heartLayer" instance=ExtResource( 2 )]
-
-[node name="PracticeAttackArea" parent="." instance=ExtResource( 5 )]
-position = Vector2( 479, 560 )
-
-[node name="walkFowardOnly" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 157, 516 )
-right = false
-
-[node name="FollowPlayer" parent="." instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 724, 432 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 4
 
 [node name="DeathScene" parent="CanvasLayer" instance=ExtResource( 4 )]
 
-[node name="Player" parent="." instance=ExtResource( 15 )]
-material = SubResource( 12 )
-position = Vector2( 197, 678 )
+[node name="QtIcon" parent="." instance=ExtResource( 6 )]
+position = Vector2( 310, 648 )
 
-[node name="LightOverlay" type="Sprite" parent="."]
-position = Vector2( 495, 389 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 10 )
+[node name="Area2D" parent="QtIcon" index="0"]
+collision_layer = 2
+
+[node name="Player" parent="." groups=["playerFollow"] instance=ExtResource( 15 )]
+material = SubResource( 12 )
+position = Vector2( -154, 675 )
+speed = 350.0
 
 [node name="DarknessOverlay" type="Sprite" parent="."]
-position = Vector2( 495, 389 )
-scale = Vector2( 0.75, 0.75 )
+position = Vector2( 2320.5, 389 )
+scale = Vector2( 2.65156, 0.75 )
 texture = ExtResource( 12 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 15 )
+anims/qtIconUpAndDown = SubResource( 16 )
+
+[node name="Portal" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1119, 647 )
+
+[connection signal="body_entered" from="QtIcon/Area2D" to="QtIcon" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="QtIcon/Area2D" to="QtIcon" method="_on_Area2D_body_exited"]
+
 [editable path="PauseLayer"]
+[editable path="QtIcon"]

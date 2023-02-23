@@ -6,16 +6,19 @@ export var entityRight = true
 
 onready var spawnNode = $SpawnNode
 onready var inBetweenTimer = $inBetweenTimer
+onready var obj 
+export var expObj = ""
 
 var spawnNum = 0 
 
 
 func _ready():
-	pass # Replace with function body.
+	obj = get_parent().get_parent().get_node(expObj)
 
 func _process(delta):
 	if spawnNum == 0:
-		_spawn_enemy()
+		pass
+#		_spawn_enemy()
 #	_spawnNum()
 
 func _spawn_enemy():
@@ -27,6 +30,7 @@ func _spawn_enemy():
 		if spawnIN == load("res://scenes/hazards/walkFowardOnly.tscn"):
 			spawn.speed = entitySpeed
 			spawn.right = entityRight
+#			spawn.obj = obj
 			print("step1")
 	else:
 		pass
@@ -38,4 +42,5 @@ func _spawnNum():
 		inBetweenTimer.start()
 
 func _on_inBetweenTimer_timeout():
-	_spawn_enemy()
+#	_spawn_enemy()
+	pass

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://resources/fonts/font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/sprites/testSprites/icon.png" type="Texture" id=2]
 [ext_resource path="res://assets/scripts/FollowPlayer.gd" type="Script" id=3]
 
@@ -20,4 +21,20 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisionBox"]
 shape = SubResource( 2 )
 
+[node name="despawn_timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = -22.0
+margin_top = -84.0
+margin_right = 18.0
+margin_bottom = -33.0
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+align = 1
+valign = 1
+
 [connection signal="area_entered" from="collisionBox" to="." method="_on_collisionBox_area_entered"]
+[connection signal="timeout" from="despawn_timer" to="." method="_on_despawn_timer_timeout"]
