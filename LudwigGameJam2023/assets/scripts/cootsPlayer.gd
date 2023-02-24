@@ -75,6 +75,7 @@ func _read_input():
 		if velocity == Vector2.ZERO:
 			animationPlayer.play("idle")
 			label.set_text("idle")
+			$hitBox/CollisionShape2D.set_deferred("disabled", true)#making sure it is off
 		velocity = velocity.normalized()
 		move_and_slide(velocity * speed)
 
@@ -136,6 +137,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		canMove = true
 	if anim_name == "scratch":
 		canMove = true
+		$hitBox/CollisionShape2D.set_deferred("disabled", true)
 
 func _die():
 	if Globals.health == 0:

@@ -31,12 +31,6 @@ func _try_again():
 	#have animation of coots on ground with try again above
 	
 func _process(delta):
-#	if Input.is_action_just_pressed("debug"):
-#		animationPlayer.play("hand_forward")
-#	if Input.is_action_just_pressed("debug2"):
-#		animationPlayer.play("Hand_Slam")
-#	if Input.is_action_just_pressed("debug3"):
-#		_roll_state()
 	_activate_fist_hitbox()
 	_lud_defeated()
 
@@ -50,7 +44,7 @@ func _lud_defeated():
 
 func _activate_fist_hitbox():
 	if node_exists(hand):
-		if hand.texture:
+		if hand.texture == handFist:
 			$Hand/hurtBox/CollisionShape2D3.set_deferred("disabled", false)
 		else:
 			$Hand/hurtBox/CollisionShape2D3.set_deferred("disabled", true)
@@ -84,21 +78,24 @@ func _roll_state():
 		var value
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
-		var pickedNumber = rng.randi_range(0, 4)
-		if pickedNumber == 0:
-			animationPlayer.play("hand_forward")
-			print("state 1")
-		if pickedNumber == 1:
-			animationPlayer.play("Hand_Slam")
-			hand.set_texture(handFist)
-			print("state 2")
-		if pickedNumber == 2:
-			_hand_snap()
-			print("state 3")
-		if pickedNumber == 3:
-			animationPlayer.play("hand_forward_bottom")
-		if pickedNumber == 4:
-			animationPlayer.play("hand_forward_top")
+		var pickedNumber = rng.randi_range(0, 6)
+		match[pickedNumber]:
+			[0]:
+				animationPlayer.play("hand_forward")
+			[1]:
+				animationPlayer.play("Hand_Slam")
+				hand.set_texture(handFist)
+			[2]:
+				animationPlayer.play("hand_forward_bottom")
+			[3]:
+				animationPlayer.play("hand_forward_top")
+			[4]:
+				_hand_snap()
+			[5]:
+				_hand_snap()
+			[6]:
+				_hand_snap()
+
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	stateTimer.start()

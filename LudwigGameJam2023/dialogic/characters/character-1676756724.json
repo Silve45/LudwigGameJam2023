@@ -13,7 +13,7 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://assets/sprites/friendIcons/LudwigIcon.png"
+			"path": "res://assets/sprites/friendIcons/ludwigIcon.png"
 		}
 	],
 	"scale": 30,
