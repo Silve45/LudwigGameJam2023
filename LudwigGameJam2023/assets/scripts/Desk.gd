@@ -35,6 +35,16 @@ func _process(delta):
 		animationPlayer.play("Hand_Slam")
 	if Input.is_action_just_pressed("debug3"):
 		_roll_state()
+	_activate_fist_hitbox()
+	
+
+func _activate_fist_hitbox():
+	if hand.texture == handFist:
+		print("hand is fist")
+		$Hand/hurtBox/CollisionShape2D3.set_deferred("disabled", false)
+	else:
+		print("hand is not fist")
+		$Hand/hurtBox/CollisionShape2D3.set_deferred("disabled", true)
 
 func _hand_snap():
 	hand.set_texture(handSnap)

@@ -1,0 +1,53 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "scratch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Coots/Arm-R:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1.86607, 1.86607, 0.217638, 0.217638, -0.5, -0.5 ),
+"update": 0,
+"values": [ 0.0, -116.04, -116.04, 0.0, 9.29235, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Coots/Arm-L:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1.86607, 1.86607, 0.217638, 0.217638, -0.5, -0.5 ),
+"update": 0,
+"values": [ 0.0, -166.103, -166.103, 0.0, 9.29235, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hitBox/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 40, 15 ), Vector2( 40, 15 ), Vector2( 44, -36 ) ]
+}

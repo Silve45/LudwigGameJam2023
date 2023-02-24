@@ -236,7 +236,6 @@ shape = SubResource( 19 )
 disabled = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-rotation = 1.5708
 cast_to = Vector2( 35.6667, 0 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

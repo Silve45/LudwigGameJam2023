@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 onready var label = $Label
 onready var rayCast = $RayCast2D
+onready var animationPlayer = $AnimationPlayer
+onready var hitBox = $hitBox
 
 signal dead#call it and have scene disapear around player
 
@@ -14,6 +16,7 @@ export (float) var knockback_modifier = 0.1
 var left = false
 var emitDead = false #only using for emit
 var canMove = true#controls hurt and death
+onready var sprite = get_node("Coots")#gets node of coots for flipping
 
 func _ready():
 	#reset upon death
@@ -23,11 +26,13 @@ func _ready():
 	#done reset upon death
 
 func _process(delta):
-#	if canMove == true:
-	_read_input()
-	_facing_right()
-	_ranged_attack()
+	if canMove == true:
+		_read_input()
+		_ranged_attack()
+		_attack()
 	_flip_raycast()
+	_facing_right()
+	_die()
 
 func _facing_right():#this will not work
 	if right == true:
@@ -47,40 +52,45 @@ func _read_input():
 		if Input.is_action_pressed("right"):
 			velocity.x += 1
 			label.set_text("right")
-			$AnimationPlayer.play("run")
+			sprite.set_scale(Vector2(0.094,0.094))#flip coots to face right
+			hitBox.set_scale(Vector2(1,1 ))
+			animationPlayer.play("run")
 			right = true
 		if Input.is_action_pressed("left"):
 			velocity.x -= 1
 			label.set_text("left")
-			$AnimationPlayer.play("run")
+			sprite.set_scale(Vector2(-0.094,0.094))#flip coots to face left
+			hitBox.set_scale(Vector2(-1, 1 ))
+			animationPlayer.play("run")
 			right = false
 		if Input.is_action_pressed("down"):
 			velocity.y += 1
 			label.set_text("down")
-			$AnimationPlayer.play("run")
+
+			animationPlayer.play("run")
 		if Input.is_action_pressed("up"):
 			velocity.y -= 1
 			label.set_text("up")
-			$AnimationPlayer.play("run")
+			animationPlayer.play("run")
 		if velocity == Vector2.ZERO:
-			$AnimationPlayer.play("idle")
+			animationPlayer.play("idle")
 			label.set_text("idle")
 		velocity = velocity.normalized()
 		move_and_slide(velocity * speed)
 
 func _ranged_attack():
 	if Input.is_action_pressed("attack2"):
-		if Globals.chargeHairBall < 99:
-			Globals.chargeHairBall += 1
-		elif Globals.chargeHairBall >= 99:
-			Globals.chargeHairBall = 99
+		if Globals.chargeHairBall < 100:
+			Globals.chargeHairBall += 1.8
+		elif Globals.chargeHairBall >= 100:
+			Globals.chargeHairBall = 100
 		print("hairBall is at ", Globals.chargeHairBall)
 
-	if Input.is_action_just_released("attack2") && Globals.chargeHairBall == 99:
+	if Input.is_action_just_released("attack2") && Globals.chargeHairBall == 100:
 		print("attack2")
 		Globals.chargeHairBall = 0
 		_shoot()
-	elif Input.is_action_just_released("attack2") && Globals.chargeHairBall < 99:
+	elif Input.is_action_just_released("attack2") && Globals.chargeHairBall < 100:
 		print("attack2Failed")
 		Globals.chargeHairBall = 0
 
@@ -91,3 +101,51 @@ func _shoot():
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = rayCast.global_position
 		bullet.global_rotation = rayCast.rotation
+
+func receive_knockback(damage_source_pos: Vector2, recivied_damage: int):
+	if receives_knockback:
+		var knockback_direction = damage_source_pos.direction_to(self.global_position)
+		var knockback_strength = recivied_damage * knockback_modifier
+		var knockback = knockback_direction * knockback_modifier
+		
+		global_position += knockback
+
+func _hurt(area):
+	receive_knockback(area.global_position, 1)
+	Globals.health -= 1
+	canMove = false
+	animationPlayer.play("hurtCoots")
+
+func _on_hurtBox_area_entered(area):
+	_hurt(area)
+	print("hurt area")
+
+
+func _on_hurtBox_body_entered(body):
+	_hurt(body)
+	print("hurt body")
+
+func _attack():
+	if Input.is_action_just_pressed("attack1"):
+		animationPlayer.play("scratch")
+		canMove = false
+		print("attack")
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "hurtCoots":
+		canMove = true
+	if anim_name == "scratch":
+		canMove = true
+
+func _die():
+	if Globals.health == 0:
+		print("die") #will playDeathAnim and restart where you are
+		if emitDead == false:
+			emit_signal("dead")
+			emitDead = true
+		canMove = false
+		animationPlayer.play("dead")
+		label.set_text("dead")
+		$hurtBox/CollisionShape2D.set_deferred("disabled", true)
+	else:
+		pass

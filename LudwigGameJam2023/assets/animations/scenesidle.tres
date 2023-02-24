@@ -4,7 +4,7 @@
 resource_name = "idle"
 step = 0.8
 tracks/0/type = "value"
-tracks/0/path = NodePath("Torso:rotation_degrees")
+tracks/0/path = NodePath("Coots:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Torso/Head/Angry:rotation_degrees")
+tracks/1/path = NodePath("Coots/Head/Angry:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -28,7 +28,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Torso/Shirt:rotation_degrees")
+tracks/2/path = NodePath("Coots/Shirt:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -40,7 +40,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Torso/Head:rotation_degrees")
+tracks/3/path = NodePath("Coots/Head:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -52,7 +52,7 @@ tracks/3/keys = {
 "values": [ 0.0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Torso/Head/Ear-R:rotation_degrees")
+tracks/4/path = NodePath("Coots/Head/Ear-R:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -64,7 +64,7 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Torso/Arm-R:rotation_degrees")
+tracks/5/path = NodePath("Coots/Arm-R:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -76,7 +76,7 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Torso/Leg-R:rotation_degrees")
+tracks/6/path = NodePath("Coots/Leg-R:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -88,7 +88,7 @@ tracks/6/keys = {
 "values": [ 0.0 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Torso/Head/Headband:rotation_degrees")
+tracks/7/path = NodePath("Coots/Head/Headband:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -100,7 +100,7 @@ tracks/7/keys = {
 "values": [ 0.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Torso/Leg-L:rotation_degrees")
+tracks/8/path = NodePath("Coots/Leg-L:rotation_degrees")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -112,7 +112,7 @@ tracks/8/keys = {
 "values": [ 0.0 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Torso/Head/Ear-L:rotation_degrees")
+tracks/9/path = NodePath("Coots/Head/Ear-L:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -124,7 +124,7 @@ tracks/9/keys = {
 "values": [ 0.0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Torso/Arm-L:rotation_degrees")
+tracks/10/path = NodePath("Coots/Arm-L:rotation_degrees")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -136,7 +136,7 @@ tracks/10/keys = {
 "values": [ 0.0 ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Torso/Tail:rotation_degrees")
+tracks/11/path = NodePath("Coots/Tail:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
