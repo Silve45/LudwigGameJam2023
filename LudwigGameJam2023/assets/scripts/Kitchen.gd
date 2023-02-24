@@ -3,6 +3,7 @@ export var finished = false
 
 func _ready():
 	$Player.connect("dead", self, "_try_again")
+	_beginng_Dialog()
 #	_camera_limit()
 
 func _try_again():
@@ -14,15 +15,19 @@ func _process(delta):
 #		_debug_dialogic()
 	pass
 
-func _debug_dialogic():
+func _beginng_Dialog():
 	if get_node_or_null('DialogNode') == null:
 		get_tree().paused = true
-		var dialog = Dialogic.start('TrialTimeline')
+		var dialog = Dialogic.start('kitchenTimeline')
 		dialog.pause_mode = Node.PAUSE_MODE_PROCESS
 		dialog.connect('timeline_end', self, '_unpause')
+		dialog.connect('dialogic_signal',self, '_dialog_signals')
 		add_child(dialog)
 		print("pausing for dialog")
 
+func _dialog_signals(argument):#has to be the word argument
+	if argument == 'unveil':
+		$fadeIn/fadeIn/AnimationPlayer.play("fadeInScreen")
 
 func _unpause(timeline_name):
 	get_tree().paused = false

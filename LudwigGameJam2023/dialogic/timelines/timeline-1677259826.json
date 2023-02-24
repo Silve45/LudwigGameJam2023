@@ -1,0 +1,71 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676756818.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1676756818.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Where am I?"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676756832.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1676756832.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hello Coots\nYour foolishness has been your undoing\nFor you see..."
+		},
+		{
+			"emit_signal": "unveil",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1676756832.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I OWN THE CAT TOWER!!!\nI AM A KING!!!\nIF YOU WANT THE TOWER \nTHEN YOU WILL HAVE TO DEFEAT ME!!"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1677259826.json",
+		"name": "kitchenTimeline"
+	}
+}

@@ -62,15 +62,17 @@ static func node_exists(node):
 	return false
 
 func _hand_snap():
-	hand.set_texture(handSnap)
-	spawner1._spawn_enemy()
-	spawner2._spawn_enemy()
-	spawner3._spawn_enemy()
-	$changeBack.start()
+	if node_exists(hand):
+		hand.set_texture(handSnap)
+		spawner1._spawn_enemy()
+		spawner2._spawn_enemy()
+		spawner3._spawn_enemy()
+		$changeBack.start()
 
 func _on_changeBack_timeout():
-	hand.set_texture(handRegular)
-	stateTimer.start()
+	if node_exists(hand):
+		hand.set_texture(handRegular)
+		stateTimer.start()
 
 
 func _on_state_timer_timeout():
@@ -78,24 +80,25 @@ func _on_state_timer_timeout():
 		_roll_state()
 
 func _roll_state():
-	var value
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var pickedNumber = rng.randi_range(0, 4)
-	if pickedNumber == 0:
-		animationPlayer.play("hand_forward")
-		print("state 1")
-	if pickedNumber == 1:
-		animationPlayer.play("Hand_Slam")
-		hand.set_texture(handFist)
-		print("state 2")
-	if pickedNumber == 2:
-		_hand_snap()
-		print("state 3")
-	if pickedNumber == 3:
-		animationPlayer.play("hand_forward_bottom")
-	if pickedNumber == 4:
-		animationPlayer.play("hand_forward_top")
+	if node_exists(hand):
+		var value
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var pickedNumber = rng.randi_range(0, 4)
+		if pickedNumber == 0:
+			animationPlayer.play("hand_forward")
+			print("state 1")
+		if pickedNumber == 1:
+			animationPlayer.play("Hand_Slam")
+			hand.set_texture(handFist)
+			print("state 2")
+		if pickedNumber == 2:
+			_hand_snap()
+			print("state 3")
+		if pickedNumber == 3:
+			animationPlayer.play("hand_forward_bottom")
+		if pickedNumber == 4:
+			animationPlayer.play("hand_forward_top")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	stateTimer.start()
