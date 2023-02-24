@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
+[ext_resource path="res://assets/sprites/gameSprites/MainScreen/BG.png" type="Texture" id=1]
 [ext_resource path="res://assets/scripts/titleScreen.gd" type="Script" id=2]
 [ext_resource path="res://resources/BitPotion.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://resources/fonts/BigFont.tres" type="DynamicFont" id=4]
@@ -8,9 +9,13 @@
 [ext_resource path="res://assets/animations/titleScreenBeginning.tres" type="Animation" id=7]
 [ext_resource path="res://assets/sprites/StarBackground2.png" type="Texture" id=8]
 [ext_resource path="res://scenes/coots.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/sprites/gameSprites/MainScreen/Fire.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/gameSprites/MainScreen/Shadow.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/gameSprites/MainScreen/Coots.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 250
+outline_size = 24
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
@@ -28,6 +33,102 @@ tracks/0/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Coots2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2593, 610 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Coots2:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Fire:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 998, 1679 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Fire:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("catCommando:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 748, 1250 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("catCommando:rect_rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Coots:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 973.5, -400 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Coots:rect_rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [node name="titleScreen" type="Control"]
 anchor_right = 1.0
@@ -38,33 +139,35 @@ starSpeed = -50
 [node name="Coots" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -338.5
-margin_top = 100.0
-margin_right = 338.5
-margin_bottom = 457.0
+margin_left = 13.5
+margin_top = -400.0
+margin_right = 690.5
+margin_bottom = -43.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "COOTS"
 align = 1
 
 [node name="catCommando" type="RichTextLabel" parent="."]
-margin_left = 396.0
-margin_top = 251.0
-margin_right = 1726.0
-margin_bottom = 497.0
+margin_left = 748.0
+margin_top = 1250.0
+margin_right = 2006.0
+margin_bottom = 1496.0
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
-bbcode_text = "[wave amp = 1 ][color=red]C[/color][color=yellow]A[/color][color=lime]T[/color] [color=blue]C[/color][color=fuchsia]O[/color][color=white]M[/color][color=purple]M[/color][color=yellow]A[/color][color=red]N[/color][color=aqua]D[/color][color=lime]O[/color]"
-text = "CAT COMMANDO"
+bbcode_text = "[center][wave amp = 1 ][color=red]C[/color][color=yellow]A[/color][color=lime]T[/color] [color=blue]C[/color][color=fuchsia]O[/color][color=white]M[/color][color=purple]M[/color][color=yellow]A[/color][color=red]N[/color][color=aqua]D[/color][color=lime]O[/color][/center]"
+text = "CAT COMMANDO[/center]"
 
 [node name="ButtonHolder" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -230.0
+margin_left = 130.0
 margin_top = 78.0
-margin_right = 230.0
-margin_bottom = 254.0
+margin_right = 590.0
+margin_bottom = 300.0
 custom_constants/separation = 50
 
 [node name="Play" type="Button" parent="ButtonHolder"]
@@ -98,6 +201,7 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="StarGround" type="ParallaxLayer" parent="StarBackground"]
+visible = false
 motion_mirroring = Vector2( 0, 1080 )
 
 [node name="Sprite" type="Sprite" parent="StarBackground/StarGround"]
@@ -105,6 +209,30 @@ position = Vector2( 960, 540 )
 texture = ExtResource( 8 )
 
 [node name="coots" parent="." instance=ExtResource( 9 )]
-position = Vector2( 280, 964 )
+visible = false
+position = Vector2( 301, 960 )
+
+[node name="Coots2" type="Sprite" parent="."]
+position = Vector2( 2593, 610 )
+scale = Vector2( 1.02222, 1.02222 )
+z_index = -1
+texture = ExtResource( 12 )
+
+[node name="Bg" type="Sprite" parent="."]
+position = Vector2( 958, 538 )
+scale = Vector2( 1.02222, 1.02222 )
+z_index = -10
+texture = ExtResource( 1 )
+
+[node name="Fire" type="Sprite" parent="."]
+position = Vector2( 998, 1679 )
+z_index = -2
+texture = ExtResource( 10 )
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 967, 543 )
+scale = Vector2( 1.02292, 1.03611 )
+z_index = -10
+texture = ExtResource( 11 )
 
 [connection signal="pressed" from="ButtonHolder/Play" to="." method="_on_Play_pressed"]

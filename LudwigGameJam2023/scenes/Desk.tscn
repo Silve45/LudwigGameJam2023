@@ -270,8 +270,6 @@ anims/hand_forward_top = ExtResource( 19 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( -24, 508 )
-speed = 300.0
-knockback_modifier = 20.0
 
 [node name="Hand" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1000, 500 )
