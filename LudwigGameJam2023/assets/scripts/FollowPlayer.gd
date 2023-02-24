@@ -21,7 +21,7 @@ func _process(delta):
 func _physics_process(delta):
 	if node_exists(obj) == true:
 		var dir = (obj.global_position - global_position).normalized()
-		rotation = dir.angle()
+#		rotation = dir.angle() #don't need rotation
 		move_and_collide(dir * speed * delta)
 	if node_exists(obj) == false:
 		_success()
