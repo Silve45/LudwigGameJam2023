@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/scripts/cootsPlayer.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/gameSprites/smallCootsSprite/Torso.png" type="Texture" id=2]
@@ -16,15 +16,9 @@
 [ext_resource path="res://assets/animations/scenesrun.tres" type="Animation" id=14]
 [ext_resource path="res://assets/animations/scenesidle.tres" type="Animation" id=15]
 [ext_resource path="res://scenes/HairBall.tscn" type="PackedScene" id=16]
-[ext_resource path="res://assets/animations/scratch.tres" type="Animation" id=17]
-[ext_resource path="res://assets/animations/hurtCoots.tres" type="Animation" id=18]
-[ext_resource path="res://assets/animations/dead.tres" type="Animation" id=19]
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 27, 43.5 )
-
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 14, 33 )
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -208,54 +202,6 @@ tracks/14/keys = {
 "update": 0,
 "values": [ Vector2( -138.587, -287.833 ) ]
 }
-tracks/15/type = "value"
-tracks/15/path = NodePath(".:modulate")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/16/type = "value"
-tracks/16/path = NodePath("hurtBox/CollisionShape2D:disabled")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/17/type = "value"
-tracks/17/path = NodePath("hitBox/CollisionShape2D:disabled")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/18/type = "value"
-tracks/18/path = NodePath("hitBox/CollisionShape2D:position")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 42, -8 ) ]
-}
 
 [sub_resource type="Animation" id=9]
 resource_name = "run left"
@@ -418,14 +364,61 @@ tracks/12/keys = {
 "values": [ 0.0, 0.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 10, 27 )
+[sub_resource type="Animation" id=10]
+resource_name = "scratch"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Coots/Arm-R:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1.86607, 1.86607, 0.217638, 0.217638, -0.5, -0.5 ),
+"update": 0,
+"values": [ Vector2( 138.585, -295.692 ), Vector2( 138.585, -295.692 ), Vector2( 138.585, -295.692 ), Vector2( 138.585, -295.692 ), Vector2( 138.585, -295.692 ), Vector2( 138.585, -295.692 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Coots/Arm-R:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1.86607, 1.86607, 0.217638, 0.217638, -0.5, -0.5 ),
+"update": 0,
+"values": [ 0.0, -116.04, -116.04, 0.0, 9.29235, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Coots/Arm-L:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1.86607, 1.86607, 0.217638, 0.217638, -0.5, -0.5 ),
+"update": 0,
+"values": [ Vector2( -138.587, -287.833 ), Vector2( -138.587, -287.833 ), Vector2( -138.587, -287.833 ), Vector2( -138.587, -287.833 ), Vector2( -138.587, -287.833 ), Vector2( -138.587, -287.833 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Coots/Arm-L:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1.86607, 1.86607, 0.217638, 0.217638, -0.5, -0.5 ),
+"update": 0,
+"values": [ 0.0, -166.103, -166.103, 0.0, 9.29235, 0.0 ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 Hairball = ExtResource( 16 )
-speed = 300.0
-knockback_modifier = 20.0
+speed = 250.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2, -2 )
@@ -509,22 +502,12 @@ scale = Vector2( 0.981529, 0.981529 )
 z_index = 1
 texture = ExtResource( 7 )
 
-[node name="hurtBox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
-position = Vector2( 0, -3 )
-shape = SubResource( 10 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 8 )
-anims/dead = ExtResource( 19 )
-anims/hurtCoots = ExtResource( 18 )
 anims/idle = ExtResource( 15 )
 anims/run = ExtResource( 14 )
 "anims/run left" = SubResource( 9 )
-anims/scratch = ExtResource( 17 )
+anims/scratch = SubResource( 10 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -39.0
@@ -536,16 +519,3 @@ text = "font"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 cast_to = Vector2( 85, 0 )
-
-[node name="hitBox" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
-position = Vector2( 42, -8 )
-shape = SubResource( 11 )
-disabled = true
-
-[connection signal="area_entered" from="hurtBox" to="." method="_on_hurtBox_area_entered"]
-[connection signal="body_entered" from="hurtBox" to="." method="_on_hurtBox_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

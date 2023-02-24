@@ -13,8 +13,6 @@ onready var spawner3 = $spawners/Spawner3
 var handRegular = load("res://assets/sprites/gameSprites/LudwigHands/Open-Hand.png")
 var handSnap = load("res://assets/sprites/gameSprites/LudwigHands/Snap2.png")
 var handFist = load("res://assets/sprites/gameSprites/LudwigHands/Fist.png")
-var ludwigDefeated = false
-#var ludDefeatDialog = false
 
 func _ready():
 	$Player.connect("dead", self, "_try_again")
@@ -31,96 +29,56 @@ func _try_again():
 	#have animation of coots on ground with try again above
 	
 func _process(delta):
-#	if Input.is_action_just_pressed("debug"):
-#		animationPlayer.play("hand_forward")
-#	if Input.is_action_just_pressed("debug2"):
-#		animationPlayer.play("Hand_Slam")
-#	if Input.is_action_just_pressed("debug3"):
-#		_roll_state()
-	_activate_fist_hitbox()
-	_lud_defeated()
-
-
-func _lud_defeated():
-	if Globals.ludwigsHealth == 0 && ludwigDefeated == false:
-		_lud_defeated_dialog()
-#		ludDefeatDialog = true
-		ludwigDefeated = true
-		
-
-func _activate_fist_hitbox():
-	if node_exists(hand):
-		if hand.texture:
-			$Hand/hurtBox/CollisionShape2D3.set_deferred("disabled", false)
-		else:
-			$Hand/hurtBox/CollisionShape2D3.set_deferred("disabled", true)
-
-static func node_exists(node):
-	if is_instance_valid(node) and node != null and \
-		node is Node and node.is_inside_tree():
-		return true
-	return false
-
-func _hand_snap():
-	if node_exists(hand):
-		hand.set_texture(handSnap)
-		spawner1._spawn_enemy()
-		spawner2._spawn_enemy()
-		spawner3._spawn_enemy()
-		$changeBack.start()
-
-func _on_changeBack_timeout():
-	if node_exists(hand):
-		hand.set_texture(handRegular)
-		stateTimer.start()
-
-
-func _on_state_timer_timeout():
-	if ludwigDefeated == false:
+	if Input.is_action_just_pressed("debug"):
+		animationPlayer.play("hand_forward")
+	if Input.is_action_just_pressed("debug2"):
+		animationPlayer.play("Hand_Slam")
+	if Input.is_action_just_pressed("debug3"):
 		_roll_state()
 
-func _roll_state():
-	if node_exists(hand):
-		var value
-		var rng = RandomNumberGenerator.new()
-		rng.randomize()
-		var pickedNumber = rng.randi_range(0, 4)
-		if pickedNumber == 0:
-			animationPlayer.play("hand_forward")
-			print("state 1")
-		if pickedNumber == 1:
-			animationPlayer.play("Hand_Slam")
-			hand.set_texture(handFist)
-			print("state 2")
-		if pickedNumber == 2:
-			_hand_snap()
-			print("state 3")
-		if pickedNumber == 3:
-			animationPlayer.play("hand_forward_bottom")
-		if pickedNumber == 4:
-			animationPlayer.play("hand_forward_top")
+func _hand_snap():
+	hand.set_texture(handSnap)
+	spawner1._spawn_enemy()
+	spawner2._spawn_enemy()
+	spawner3._spawn_enemy()
+	$changeBack.start()
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_changeBack_timeout():
+	hand.set_texture(handRegular)
 	stateTimer.start()
 
 
-func _lud_defeated_dialog():
-	if get_node_or_null('DialogNode') == null:
-#		get_tree().paused = true
-		var dialog = Dialogic.start('dersBetrayal')
-		_ludwig_talk()
-		dialog.pause_mode = Node.PAUSE_MODE_PROCESS
-		dialog.connect('timeline_end', self, '_unpause')
-		dialog.connect('dialogic_signal',self, '_kitchen_catch')
-		add_child(dialog)
+func _on_state_timer_timeout():
+	_roll_state()
 
-func _kitchen_catch(argument):#has to be the word argument
-	if argument == 'kitchenSignal':
-		$kitchenTransition/kitchenTransition/AnimationPlayer.play("kitchenTransition")
-	if argument == 'lud_explode_start':
-		ludwigEyeAnimation.play("explodeStart")
-	if argument == 'lud_explode_finish':
-		ludwigEyeAnimation.play("explodeFinish")
+func _roll_state():
+	var value
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var pickedNumber = rng.randi_range(0, 4)
+	if pickedNumber == 0:
+		animationPlayer.play("hand_forward")
+		print("state 1")
+	if pickedNumber == 1:
+		animationPlayer.play("Hand_Slam")
+		hand.set_texture(handFist)
+		print("state 2")
+	if pickedNumber == 2:
+		_hand_snap()
+		print("state 3")
+	if pickedNumber == 3:
+		animationPlayer.play("hand_forward_bottom")
+	if pickedNumber == 4:
+		animationPlayer.play("hand_forward_top")
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+#	if anim_name == "hand_forward":
+#		stateTimer.start()
+#	if anim_name == "Hand_Slam":
+#		stateTimer.start()
+	stateTimer.start()
+
+
 
 func _beginning_dialogic():
 	if get_node_or_null('DialogNode') == null:
@@ -128,7 +86,7 @@ func _beginning_dialogic():
 		var dialog = Dialogic.start('ludwigBattle')
 		_ludwig_talk()
 		dialog.pause_mode = Node.PAUSE_MODE_PROCESS
-		dialog.connect('timeline_end', self, '_unpause_lud')
+		dialog.connect('timeline_end', self, '_unpause')
 		dialog.connect('dialogic_signal',self, '_begin_fight')
 		add_child(dialog)
 		print("pausing for dialog")
@@ -147,9 +105,6 @@ func _ludwig_talk_stop():
 	ludwigAnimation.play("RESET")
 
 func _unpause(timeline_name):
-	get_tree().paused = false
-
-func _unpause_lud(timeline_name):
 	get_tree().paused = false
 	_ludwig_talk_stop()
 #	print("unpause")

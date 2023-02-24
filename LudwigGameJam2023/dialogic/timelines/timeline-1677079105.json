@@ -5,40 +5,6 @@
 			"animation_length": 0,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
-			"character": "character-1676756724.json",
-			"event_id": "dialogic_002",
-			"mirror_portrait": false,
-			"portrait": "Default",
-			"portrait_definition": "",
-			"position": {
-				"0": false,
-				"1": false,
-				"2": false,
-				"3": false,
-				"4": false
-			},
-			"type": 0,
-			"z_index": 0
-		},
-		{
-			"emit_signal": "lud_explode_start",
-			"event_id": "dialogic_040"
-		},
-		{
-			"character": "character-1676756724.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "AHHH!!!!\nNOOO!!!!\nI CAN'T BELIEVE THIS\nLIKE AND SUBSCRIBE..."
-		},
-		{
-			"emit_signal": "lud_explode_finish",
-			"event_id": "dialogic_040"
-		},
-		{
-			"animation": "[Default]",
-			"animation_length": 0,
-			"change_mirror_portrait": false,
-			"change_z_index": false,
 			"character": "character-1676756832.json",
 			"event_id": "dialogic_002",
 			"mirror_portrait": false,
@@ -61,13 +27,17 @@
 			"text": "You Saved me Coots\nThank you so much\nI could just sing your praises\nYou are so Strong \nSo Smart\nSo..."
 		},
 		{
+			"emit_signal": "_evil_begin",
+			"event_id": "dialogic_040"
+		},
+		{
 			"character": "character-1676756832.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Stupid"
 		},
 		{
-			"emit_signal": "kitchenSignal",
+			"emit_signal": "_change_final",
 			"event_id": "dialogic_040"
 		}
 	],
