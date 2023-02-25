@@ -86,3 +86,4 @@ collision_mask = 0
 shape = SubResource( 3 )
 
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurtBox_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

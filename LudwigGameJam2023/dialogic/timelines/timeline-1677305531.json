@@ -1,0 +1,65 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676756832.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1676756832.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Well\n...\nDarn.\nThat was my second favorite cat tower\n...\nSo...\nCongrats.\nOn winning, and all that.\nI'm going to lick the lady's food\nWanna Come?\nI can see from your blank stare \nthat you do\nLet's go"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1676756794.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1676756794.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Wait What?"
+		},
+		{
+			"emit_signal": "fadeBlack",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1677305531.json",
+		"name": "dersDefeat"
+	}
+}

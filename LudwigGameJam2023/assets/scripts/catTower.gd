@@ -19,3 +19,8 @@ func _tower_dead():
 	if Globals.catTowerHealth == 0 && towerDead == false:
 		animationPlayer.play("towerDead")
 		towerDead = true
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "towerDead":
+		queue_free()

@@ -22,3 +22,7 @@ func _on_Play_pressed(): #this will have to be changed
 
 func _move_stars(delta):
 	$StarBackground/StarGround.motion_offset.y += starSpeed * delta
+
+
+func _on_I_dont_know_pressed():
+		OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")

@@ -181,7 +181,7 @@ margin_top = 136.0
 margin_right = 460.0
 margin_bottom = 222.0
 custom_fonts/font = ExtResource( 4 )
-text = "Another Button"
+text = "RickRoll"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )
@@ -236,3 +236,4 @@ z_index = -10
 texture = ExtResource( 11 )
 
 [connection signal="pressed" from="ButtonHolder/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="ButtonHolder/I don't know" to="." method="_on_I_dont_know_pressed"]

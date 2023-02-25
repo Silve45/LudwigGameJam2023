@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://scenes/fadeIn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scripts/Kitchen.gd" type="Script" id=2]
@@ -27,6 +27,9 @@
 [ext_resource path="res://assets/animations/clawSwipeVertical.tres" type="Animation" id=25]
 [ext_resource path="res://assets/animations/push.tres" type="Animation" id=26]
 [ext_resource path="res://assets/sprites/derFightSprites/CirclePush.png" type="Texture" id=27]
+[ext_resource path="res://scenes/FinalFade.tscn" type="PackedScene" id=28]
+[ext_resource path="res://scenes/hazards/Spawner.tscn" type="PackedScene" id=29]
+[ext_resource path="res://scenes/hazards/FollowPlayer.tscn" type="PackedScene" id=30]
 
 [sub_resource type="ShaderMaterial" id=11]
 shader = ExtResource( 12 )
@@ -100,6 +103,20 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="CircleShape2D" id=14]
 radius = 30.0
+
+[sub_resource type="ParticlesMaterial" id=15]
+emission_shape = 1
+emission_sphere_radius = 0.01
+flag_disable_z = true
+spread = 126.12
+gravity = Vector3( 0, 100, 0 )
+initial_velocity = 45.0
+angular_velocity = 424.29
+angular_velocity_random = 0.63
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 17.76
+color = Color( 0.847059, 0.901961, 0.0784314, 1 )
 
 [sub_resource type="Animation" id=12]
 length = 0.001
@@ -415,6 +432,46 @@ tracks/25/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
+tracks/26/type = "value"
+tracks/26/path = NodePath("ders:rotation_degrees")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "fall_to_earth"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ders:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ders:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 421, 85 ), Vector2( 506, 626 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 63.3062, 27.5322 )
@@ -466,9 +523,9 @@ __meta__ = {
 
 [node name="hazardMap" type="TileMap" parent="."]
 tile_set = SubResource( 6 )
-collision_layer = 4
 collision_mask = 0
 format = 1
+tile_data = PoolIntArray( 524285, 0, 0, 524305, 0, 0, 786429, 0, 0, 720914, 0, 0 )
 
 [node name="heartLayer" type="CanvasLayer" parent="."]
 
@@ -508,12 +565,20 @@ shape = SubResource( 14 )
 [node name="ders" parent="." instance=ExtResource( 16 )]
 position = Vector2( 421, 85 )
 
+[node name="heal" type="Particles2D" parent="."]
+position = Vector2( 420, 41 )
+scale = Vector2( 2, 2 )
+emitting = false
+amount = 100
+process_material = SubResource( 15 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 12 )
 anims/bottom_to_middle = ExtResource( 18 )
 anims/bottom_to_top = ExtResource( 21 )
 anims/clawSwipeHorizontal = ExtResource( 24 )
 anims/clawSwipeVertical = ExtResource( 25 )
+anims/fall_to_earth = SubResource( 16 )
 anims/middle_to_bottom = ExtResource( 20 )
 anims/middle_to_top = ExtResource( 22 )
 anims/push = ExtResource( 26 )
@@ -663,9 +728,40 @@ one_shot = true
 [node name="drinkTimer" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="stateTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="finalFade" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="kitchenTransition" parent="finalFade" instance=ExtResource( 28 )]
+
+[node name="pushAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/push = ExtResource( 26 )
+
+[node name="Spawners" type="Node2D" parent="."]
+position = Vector2( -178, 730 )
+
+[node name="Spawner" parent="Spawners" instance=ExtResource( 29 )]
+spawnIN = ExtResource( 30 )
+
+[node name="Spawner2" parent="Spawners" instance=ExtResource( 29 )]
+position = Vector2( 1283, -195 )
+spawnIN = ExtResource( 30 )
+
+[node name="Spawner3" parent="Spawners" instance=ExtResource( 29 )]
+position = Vector2( 2, -257 )
+spawnIN = ExtResource( 30 )
+
+[node name="Spawner4" parent="Spawners" instance=ExtResource( 29 )]
+position = Vector2( 1344, 1 )
+spawnIN = ExtResource( 30 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="timeout" from="zoneTimer" to="." method="_on_zoneTimer_timeout"]
 [connection signal="timeout" from="drinkTimer" to="." method="_on_drinkTimer_timeout"]
+[connection signal="timeout" from="stateTimer" to="." method="_on_stateTimer_timeout"]
 
 [editable path="PauseLayer"]
