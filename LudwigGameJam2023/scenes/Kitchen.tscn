@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/fadeIn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scripts/Kitchen.gd" type="Script" id=2]
@@ -7,13 +7,21 @@
 [ext_resource path="res://assets/sprites/gameSprites/KitchenScene/Kitchen_Scene.png" type="Texture" id=5]
 [ext_resource path="res://scenes/Pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/ui_Left_Container.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/PracticeAttackArea.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/catTower.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/sprites/tileSprites/deskImage.png" type="Texture" id=9]
+[ext_resource path="res://scenes/DersHealthBar.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/DeathScene.tscn" type="PackedScene" id=11]
 [ext_resource path="res://resources/shaders/PixelShader.tres" type="Shader" id=12]
 [ext_resource path="res://assets/sprites/gameSprites/GarageScene/GarageScene/LightOverlay.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/gameSprites/GarageScene/GarageScene/Floor.png" type="Texture" id=14]
 [ext_resource path="res://assets/sprites/gameSprites/GarageScene/GarageScene/DarknessOverlay.png" type="Texture" id=15]
+[ext_resource path="res://scenes/dersBattleOfCats.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/animations/top_to_middle.tres" type="Animation" id=17]
+[ext_resource path="res://assets/animations/bottom_to_middle.tres" type="Animation" id=18]
+[ext_resource path="res://assets/animations/top_to_bottom.tres" type="Animation" id=19]
+[ext_resource path="res://assets/animations/middle_to_bottom.tres" type="Animation" id=20]
+[ext_resource path="res://assets/animations/bottom_to_top.tres" type="Animation" id=21]
+[ext_resource path="res://assets/animations/middle_to_top.tres" type="Animation" id=22]
 
 [sub_resource type="ShaderMaterial" id=11]
 shader = ExtResource( 12 )
@@ -85,6 +93,21 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ders:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 421, 85 ) ]
+}
+
 [node name="MainScene1" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -140,9 +163,6 @@ format = 1
 
 [node name="HeartContainer" parent="heartLayer" instance=ExtResource( 7 )]
 
-[node name="PracticeAttackArea" parent="." instance=ExtResource( 8 )]
-position = Vector2( 479, 560 )
-
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 344, 646 )
 
@@ -156,5 +176,26 @@ layer = 4
 [node name="fadeIn" parent="fadeIn" instance=ExtResource( 1 )]
 pause_mode = 2
 visible = false
+
+[node name="catTower" parent="." instance=ExtResource( 8 )]
+
+[node name="towerHealthBar" type="CanvasLayer" parent="."]
+
+[node name="DersHealthBar" parent="towerHealthBar" instance=ExtResource( 10 )]
+
+[node name="ders" parent="." instance=ExtResource( 16 )]
+position = Vector2( 421, 85 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 12 )
+anims/bottom_to_middle = ExtResource( 18 )
+anims/bottom_to_top = ExtResource( 21 )
+anims/middle_to_bottom = ExtResource( 20 )
+anims/middle_to_top = ExtResource( 22 )
+anims/top_to_bottom = ExtResource( 19 )
+anims/top_to_middle = ExtResource( 17 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 
 [editable path="PauseLayer"]

@@ -81,7 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Ludwig Game Jam 2023"
-run/main_scene="res://scenes/Desk.tscn"
+run/main_scene="res://scenes/Kitchen.tscn"
 config/icon="res://assets/sprites/testSprites/icon.png"
 
 [autoload]
@@ -228,6 +228,7 @@ interact={
 2d_physics/layer_4="enemy_hurt_box"
 2d_physics/layer_5="world"
 2d_physics/layer_6="playersAttack"
+2d_physics/layer_7="ders"
 
 [physics]
 

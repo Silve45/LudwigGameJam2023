@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-AmazonJungle_Kite_Away_8BIT.mp3-c546f05ccd3fd4d834973d74d4b9bfa3.mp3str"
+
+[deps]
+
+source_file="res://assets/music/1-AmazonJungle_Kite_Away_8BIT.mp3"
+dest_files=[ "res://.import/1-AmazonJungle_Kite_Away_8BIT.mp3-c546f05ccd3fd4d834973d74d4b9bfa3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

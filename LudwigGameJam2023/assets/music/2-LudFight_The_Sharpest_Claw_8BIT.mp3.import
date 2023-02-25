@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-LudFight_The_Sharpest_Claw_8BIT.mp3-83d0d9d9061e313ea2c0e460219b36fa.mp3str"
+
+[deps]
+
+source_file="res://assets/music/2-LudFight_The_Sharpest_Claw_8BIT.mp3"
+dest_files=[ "res://.import/2-LudFight_The_Sharpest_Claw_8BIT.mp3-83d0d9d9061e313ea2c0e460219b36fa.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

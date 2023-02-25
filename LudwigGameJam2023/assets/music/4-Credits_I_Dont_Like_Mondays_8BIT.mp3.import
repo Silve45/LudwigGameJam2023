@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-Credits_I_Dont_Like_Mondays_8BIT.mp3-12f2fbae782476e472fc18583eeff4fc.mp3str"
+
+[deps]
+
+source_file="res://assets/music/4-Credits_I_Dont_Like_Mondays_8BIT.mp3"
+dest_files=[ "res://.import/4-Credits_I_Dont_Like_Mondays_8BIT.mp3-12f2fbae782476e472fc18583eeff4fc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

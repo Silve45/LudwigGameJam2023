@@ -1,6 +1,5 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://assets/scripts/cootsPlayer.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/gameSprites/smallCootsSprite/Torso.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/gameSprites/smallCootsSprite/Arm-R.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/gameSprites/smallCootsSprite/Angry.png" type="Texture" id=4]
@@ -14,7 +13,6 @@
 [ext_resource path="res://resources/fonts/font.tres" type="DynamicFont" id=13]
 [ext_resource path="res://assets/animations/scenesrun.tres" type="Animation" id=14]
 [ext_resource path="res://assets/animations/scenesidle.tres" type="Animation" id=15]
-[ext_resource path="res://scenes/HairBall.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 27, 43.5 )
@@ -848,10 +846,9 @@ tracks/3/keys = {
 "values": [ 0.0, -166.103, -166.103, 0.0, 9.29235, 0.0 ]
 }
 
-[node name="Player" type="KinematicBody2D"]
-script = ExtResource( 1 )
-Hairball = ExtResource( 16 )
-speed = 250.0
+[node name="ders" type="KinematicBody2D"]
+collision_layer = 64
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
