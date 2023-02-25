@@ -4,6 +4,7 @@ onready var animationPlayer = $AnimationPlayer
 
 func _ready():
 	animationPlayer.play("Credits")
+	Globals.gameFinished = true
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Credits":

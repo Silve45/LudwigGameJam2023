@@ -87,7 +87,7 @@ custom_fonts/font = ExtResource( 2 )
 text = "<- Don't worry, just sleeping :)"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 128
+layer = 65
 
 [node name="coots" parent="CanvasLayer" instance=ExtResource( 1 )]
 modulate = Color( 1, 1, 1, 0 )

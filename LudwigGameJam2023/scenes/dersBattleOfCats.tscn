@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/sprites/gameSprites/smallCootsSprite/Torso.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/gameSprites/smallCootsSprite/Arm-R.png" type="Texture" id=3]
@@ -10,7 +10,6 @@
 [ext_resource path="res://assets/sprites/gameSprites/smallCootsSprite/Ear-L.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/gameSprites/smallCootsSprite/Ear-R.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/gameSprites/smallCootsSprite/Arm-L.png" type="Texture" id=12]
-[ext_resource path="res://resources/fonts/font.tres" type="DynamicFont" id=13]
 [ext_resource path="res://assets/animations/scenesrun.tres" type="Animation" id=14]
 [ext_resource path="res://assets/animations/scenesidle.tres" type="Animation" id=15]
 
@@ -938,14 +937,6 @@ anims/jump = SubResource( 11 )
 anims/run = ExtResource( 14 )
 "anims/run left" = SubResource( 9 )
 anims/scratch = SubResource( 10 )
-
-[node name="Label" type="Label" parent="."]
-margin_left = -39.0
-margin_top = -93.0
-margin_right = 41.0
-margin_bottom = -42.0
-custom_fonts/font = ExtResource( 13 )
-text = "font"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 cast_to = Vector2( 85, 0 )

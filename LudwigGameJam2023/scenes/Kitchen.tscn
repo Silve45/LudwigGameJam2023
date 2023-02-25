@@ -535,7 +535,7 @@ tile_data = PoolIntArray( 524285, 0, 0, 524305, 0, 0, 786429, 0, 0, 720914, 0, 0
 position = Vector2( 218, 627 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 4
+layer = 64
 
 [node name="DeathScene" parent="CanvasLayer" instance=ExtResource( 11 )]
 
@@ -729,7 +729,7 @@ one_shot = true
 wait_time = 5.0
 
 [node name="stateTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 1.5
 one_shot = true
 
 [node name="finalFade" type="CanvasLayer" parent="."]

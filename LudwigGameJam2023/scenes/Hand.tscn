@@ -99,6 +99,9 @@ position = Vector2( 72, 0 )
 scale = Vector2( 1.4, 1 )
 texture = ExtResource( 4 )
 
+[node name="soundEffects" type="AudioStreamPlayer" parent="."]
+bus = "SoundEffects"
+
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurtBox_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

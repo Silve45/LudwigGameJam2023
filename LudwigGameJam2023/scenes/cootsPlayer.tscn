@@ -21,7 +21,7 @@
 [ext_resource path="res://assets/animations/dead.tres" type="Animation" id=19]
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 27, 43.5 )
+extents = Vector2( 22, 34.5 )
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 14, 33 )
@@ -425,11 +425,11 @@ extents = Vector2( 10, 27 )
 collision_mask = 18
 script = ExtResource( 1 )
 Hairball = ExtResource( 16 )
-speed = 300.0
+speed = 350.0
 knockback_modifier = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2, -2 )
+position = Vector2( -1, 2.5 )
 z_index = 4
 shape = SubResource( 7 )
 
@@ -528,6 +528,7 @@ anims/run = ExtResource( 14 )
 anims/scratch = ExtResource( 17 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = -39.0
 margin_top = -93.0
 margin_right = 41.0
@@ -546,6 +547,9 @@ collision_mask = 0
 position = Vector2( 42, -8 )
 shape = SubResource( 11 )
 disabled = true
+
+[node name="soundEffects" type="AudioStreamPlayer" parent="."]
+bus = "SoundEffects"
 
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurtBox_area_entered"]
 [connection signal="body_entered" from="hurtBox" to="." method="_on_hurtBox_body_entered"]

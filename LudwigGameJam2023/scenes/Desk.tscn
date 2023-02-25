@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://scenes/Pause.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/LudwigHealthBar.tscn" type="PackedScene" id=2]
@@ -22,6 +22,11 @@
 [ext_resource path="res://scenes/hazards/FollowPlayer.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/hazards/Spawner.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/kitchenTransition.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/dersBattleOfCats.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/sprites/gameSprites/ludwigSprite/CageClosed.png" type="Texture" id=24]
+[ext_resource path="res://assets/sprites/gameSprites/ludwigSprite/ChainLong.png" type="Texture" id=25]
+[ext_resource path="res://assets/sprites/gameSprites/ludwigSprite/explosion.jpg" type="Texture" id=26]
+[ext_resource path="res://assets/animations/cage_explode.tres" type="Animation" id=27]
 
 [sub_resource type="Shader" id=11]
 code = "/*
@@ -178,6 +183,45 @@ extents = Vector2( 55.5, 214.5 )
 
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 72.5, 219 )
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Explosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ders:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 752, 262 ) ]
+}
 
 [node name="MainScene1" type="Node2D"]
 script = ExtResource( 11 )
@@ -341,6 +385,40 @@ texture = ExtResource( 4 )
 [node name="kitchenTransition" type="CanvasLayer" parent="."]
 
 [node name="kitchenTransition" parent="kitchenTransition" instance=ExtResource( 22 )]
+
+[node name="ders" parent="." instance=ExtResource( 23 )]
+position = Vector2( 752, 262 )
+
+[node name="Cage" type="Node2D" parent="."]
+position = Vector2( 753, 129 )
+scale = Vector2( 0.15, 0.15 )
+z_index = 2
+
+[node name="chain" type="Sprite" parent="Cage"]
+texture = ExtResource( 25 )
+
+[node name="chain2" type="Sprite" parent="Cage"]
+position = Vector2( 6.6665, -466.667 )
+texture = ExtResource( 25 )
+
+[node name="chain3" type="Sprite" parent="Cage"]
+position = Vector2( 13.333, -933.333 )
+texture = ExtResource( 25 )
+
+[node name="box" type="Sprite" parent="Cage"]
+position = Vector2( -9, 730 )
+texture = ExtResource( 24 )
+
+[node name="Explosion" type="Sprite" parent="Cage"]
+visible = false
+position = Vector2( -6.66699, 780 )
+scale = Vector2( 2.51852, 2.59259 )
+z_index = 2
+texture = ExtResource( 26 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cage"]
+anims/RESET = SubResource( 18 )
+anims/cage_explode = ExtResource( 27 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="changeBack" to="." method="_on_changeBack_timeout"]

@@ -17,6 +17,7 @@ var ludwigDefeated = false
 #var ludDefeatDialog = false
 
 func _ready():
+	MusicController._play_song(2)
 	$Player.connect("dead", self, "_try_again")
 	Globals.ludwigsHealth += Globals.maxLudwigHealth
 	$TextureRect.visible = false
@@ -39,6 +40,7 @@ func _lud_defeated():
 	if Globals.ludwigsHealth == 0 && ludwigDefeated == false:
 		_lud_defeated_dialog()
 #		ludDefeatDialog = true
+		MusicController._stop_music()
 		ludwigDefeated = true
 		
 
@@ -58,6 +60,7 @@ static func node_exists(node):
 func _hand_snap():
 	if node_exists(hand):
 		hand.set_texture(handSnap)
+		$Hand._play_snap()
 		spawner1._spawn_enemy()
 		spawner2._spawn_enemy()
 		spawner3._spawn_enemy()
@@ -118,6 +121,7 @@ func _kitchen_catch(argument):#has to be the word argument
 		ludwigEyeAnimation.play("explodeStart")
 	if argument == 'lud_explode_finish':
 		ludwigEyeAnimation.play("explodeFinish")
+		$Cage/AnimationPlayer.play("cage_explode")
 
 func _beginning_dialogic():
 	if get_node_or_null('DialogNode') == null:

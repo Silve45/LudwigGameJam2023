@@ -39,6 +39,7 @@ func _end_Dialog():
 
 func _end_signals(argument):
 	if argument == "fadeBlack":
+		MusicController._play_song(4)
 		$finalFade/kitchenTransition/AnimationPlayer.play("kitchenTransition")
 
 func _spawn_enemies():
@@ -50,6 +51,7 @@ func _spawn_enemies():
 
 func _dead():
 	if Globals.catTowerHealth == 0 && defeated == false:
+		MusicController._stop_music()
 		$AnimationPlayer.play("fall_to_earth")
 		defeated = true
 		_end_Dialog()
@@ -63,6 +65,8 @@ func _dead():
 		
 
 func _ready():
+	Globals.catTowerHealth = Globals.maxCatTowerHealth
+	MusicController._play_song(3)
 	$Player.connect("dead", self, "_try_again")
 	_beginng_Dialog()
 	$towerHealthBar.visible = false
@@ -71,19 +75,19 @@ func _ready():
 #	_camera_limit()
 
 func _zone1():
-	if Globals.catTowerHealth == 11 && zone1 == false:
+	if Globals.catTowerHealth == 18 && zone1 == false:
 		$pushAnimationPlayer.play("push")
 		zone1 = true
 		zoneTimer.start()
 
 func _zone2():
-	if Globals.catTowerHealth == 7 && zone2 == false:
+	if Globals.catTowerHealth == 11 && zone2 == false:
 		$pushAnimationPlayer.play("push")
 		zone2 = true
 		zoneTimer.start()
 
 func _zone3():
-	if Globals.catTowerHealth == 4 && zone3 == false:
+	if Globals.catTowerHealth == 6 && zone3 == false:
 		$pushAnimationPlayer.play("push")
 		zone3 = true
 		zoneTimer.start()
@@ -100,7 +104,7 @@ func _drinking():
 
 
 func _emergency_stop_drinking():
-	if Globals.catTowerHealth == 15 && isDrinking == true:
+	if Globals.catTowerHealth == Globals.maxCatTowerHealth && isDrinking == true:
 		_interupted()
 		isDrinking = false
 
@@ -139,7 +143,7 @@ func _roll_state():
 	rng.randomize()
 	var maxRoll = 6
 	var pickedNumber = rng.randi_range(0, maxRoll)
-	while(pickedNumber == 4 && Globals.catTowerHealth == 15):
+	while(pickedNumber == 4 && Globals.catTowerHealth == Globals.maxCatTowerHealth):
 		pickedNumber = rng.randi_range(0, maxRoll)
 		print("full health, just keep going")
 

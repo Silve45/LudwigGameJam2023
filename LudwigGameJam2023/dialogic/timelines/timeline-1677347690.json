@@ -1,0 +1,95 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1677347666.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1677347666.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ludwig has become obsessed with content"
+		},
+		{
+			"emit_signal": "coots",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1677347666.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "After realizing that his new cat, coots\nWasn't pulling in anymore views"
+		},
+		{
+			"emit_signal": "ludwig",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1677347666.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "He cast it aside \nAnd deciding to milk his old content"
+		},
+		{
+			"emit_signal": "ders",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1677347666.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Put Ders on display 24/7"
+		},
+		{
+			"emit_signal": "coots",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1677347666.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Coots, now in her darkest hour, \nMust find the strength to beat Ludwig\nSo that she may have a good nights sleep, on the cat tower"
+		},
+		{
+			"emit_signal": "qt",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1677347666.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "A good friend decides to help coots in her hour of need"
+		},
+		{
+			"emit_signal": "coots",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1677347666.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Will Coots be able to defeat Ludwig?"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1677347690.json",
+		"name": "Set_up"
+	}
+}

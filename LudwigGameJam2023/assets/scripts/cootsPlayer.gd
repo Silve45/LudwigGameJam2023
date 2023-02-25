@@ -4,6 +4,11 @@ onready var label = $Label
 onready var rayCast = $RayCast2D
 onready var animationPlayer = $AnimationPlayer
 onready var hitBox = $hitBox
+onready var soundEffects = $soundEffects
+
+onready var meow = load("res://assets/soundEffects/MeowSoundEffect.mp3")
+onready var hairballSound = load("res://assets/soundEffects/hairBall.wav")
+onready var attackSound = load("res://assets/soundEffects/attackCoots.wav")
 
 signal dead#call it and have scene disapear around player
 
@@ -33,6 +38,7 @@ func _process(delta):
 	_flip_raycast()
 	_facing_right()
 	_die()
+	_meow()
 
 func _facing_right():#this will not work
 	if right == true:
@@ -90,10 +96,21 @@ func _ranged_attack():
 	if Input.is_action_just_released("attack2") && Globals.chargeHairBall == 100:
 		print("attack2")
 		Globals.chargeHairBall = 0
+		soundEffects.stream = hairballSound
+		soundEffects.volume_db = -15
+		soundEffects.play()
 		_shoot()
 	elif Input.is_action_just_released("attack2") && Globals.chargeHairBall < 100:
 		print("attack2Failed")
 		Globals.chargeHairBall = 0
+
+
+func _meow():
+	if Input.is_action_just_pressed("meow"):
+		soundEffects.stream = meow
+		soundEffects.volume_db = 5
+		soundEffects.play()
+
 
 func _shoot():
 	rayCast.enabled = false
@@ -128,6 +145,9 @@ func _on_hurtBox_body_entered(body):
 
 func _attack():
 	if Input.is_action_just_pressed("attack1"):
+		soundEffects.stream = attackSound
+		soundEffects.volume_db = -20
+		soundEffects.play()
 		animationPlayer.play("scratch")
 		canMove = false
 		print("attack")

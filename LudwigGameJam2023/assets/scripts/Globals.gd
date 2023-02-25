@@ -3,11 +3,12 @@ extends Node
 var health = 3
 var maxHealth = 3
 var chargeHairBall = 0
-var ludwigsHealth = 10
-var maxLudwigHealth = 10
-var catTowerHealth = 15
-var maxCatTowerHealth = 15
+var ludwigsHealth = 20
+var maxLudwigHealth = 20
+var catTowerHealth = 25
+var maxCatTowerHealth = 25
 
+var gameFinished = false
 
 func _process(delta):
 	if Globals.health <= 0:

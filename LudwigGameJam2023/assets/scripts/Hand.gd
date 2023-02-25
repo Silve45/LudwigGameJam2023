@@ -1,9 +1,15 @@
 extends Sprite
 
 onready var hurtBox = $hurtBox
+onready var soundEffects = $soundEffects 
+onready var snap = load("res://assets/soundEffects/snap.mp3")
 
 func _ready():
 	pass # Replace with function body.
+
+func _play_snap():
+	soundEffects.stream = snap
+	soundEffects.play()
 
 func _process(delta):
 	_ludwigDead()
