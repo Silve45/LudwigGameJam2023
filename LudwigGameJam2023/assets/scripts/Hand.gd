@@ -3,6 +3,7 @@ extends Sprite
 onready var hurtBox = $hurtBox
 onready var soundEffects = $soundEffects 
 onready var snap = load("res://assets/soundEffects/snap.mp3")
+onready var explosion = load("res://assets/soundEffects/explosionSound.wav")
 
 func _ready():
 	pass # Replace with function body.
@@ -11,12 +12,18 @@ func _play_snap():
 	soundEffects.stream = snap
 	soundEffects.play()
 
+func _play_explosion():
+	soundEffects.stream = explosion
+	soundEffects.volume_db = -10
+	soundEffects.play()
+
 func _process(delta):
 	_ludwigDead()
 
 func _ludwigDead():
 	if Globals.ludwigsHealth == 0:
 		$AnimationPlayer.play("handDead")
+		_play_explosion()
 
 func _on_hurtBox_area_entered(area):
 	Globals.ludwigsHealth -= 1

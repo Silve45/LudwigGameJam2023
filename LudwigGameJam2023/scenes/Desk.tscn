@@ -420,6 +420,8 @@ texture = ExtResource( 26 )
 anims/RESET = SubResource( 18 )
 anims/cage_explode = ExtResource( 27 )
 
+[node name="soundEffects" type="AudioStreamPlayer" parent="."]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="changeBack" to="." method="_on_changeBack_timeout"]
 [connection signal="timeout" from="state_timer" to="." method="_on_state_timer_timeout"]

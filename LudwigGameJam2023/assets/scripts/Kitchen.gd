@@ -125,12 +125,6 @@ func _try_again():
 	#have animation of coots on ground with try again above
 	
 func _process(delta):
-	if Input.is_action_just_pressed("debug"):
-		_spawn_enemies()
-	if Input.is_action_just_pressed("debug2"):
-		_roll_state()
-	if Input.is_action_just_pressed("debug3"):
-		animationPlayer.play("clawSwipeHorizontal")
 	_zone1()
 	_zone2()
 	_zone3()

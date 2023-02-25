@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scenes/Pause.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui_Left_Container.tscn" type="PackedScene" id=2]
@@ -14,6 +14,13 @@
 [ext_resource path="res://assets/sprites/gameSprites/GarageScene/GarageScene/DarknessOverlay.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/testSprites/TX Props.png" type="Texture" id=13]
 [ext_resource path="res://scenes/cootsPlayer.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/sprites/Boxes/box5.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/Boxes/two stacked/box_twostack3.png" type="Texture" id=16]
+[ext_resource path="res://assets/sprites/Boxes/box3.png" type="Texture" id=17]
+[ext_resource path="res://assets/sprites/Boxes/box4.png" type="Texture" id=18]
+[ext_resource path="res://assets/sprites/Boxes/box2.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprites/Boxes/box1.png" type="Texture" id=20]
+[ext_resource path="res://scenes/boxArea.tscn" type="PackedScene" id=21]
 
 [sub_resource type="ConvexPolygonShape2D" id=13]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -110,6 +117,31 @@ tracks/0/keys = {
 "values": [ Vector2( 310, 648 ), Vector2( 310, 670 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 293.333, 163.333 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 297.5, 157.5 )
+
+[sub_resource type="Animation" id=19]
+length = 0.001
+
+[sub_resource type="Animation" id=20]
+resource_name = "boxShiver"
+length = 0.16
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 6, 0 ), Vector2( 0, 0 ), Vector2( -6, 0 ), Vector2( 0, 0 ) ]
+}
+
 [node name="MainScene1" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -118,18 +150,149 @@ position = Vector2( 2323, 386 )
 scale = Vector2( 2.65313, 0.75 )
 texture = ExtResource( 9 )
 
+[node name="backgroundBoxes4" type="Node2D" parent="."]
+position = Vector2( -114, -94 )
+scale = Vector2( 0.5, 0.4 )
+
+[node name="Box1" type="Sprite" parent="backgroundBoxes4"]
+position = Vector2( 91, 365 )
+texture = ExtResource( 20 )
+
+[node name="Box2" type="Sprite" parent="backgroundBoxes4"]
+position = Vector2( 481, 424 )
+texture = ExtResource( 19 )
+
+[node name="Box3" type="Sprite" parent="backgroundBoxes4"]
+position = Vector2( 885, 487 )
+texture = ExtResource( 17 )
+
+[node name="Box4" type="Sprite" parent="backgroundBoxes4"]
+position = Vector2( 636, 166 )
+texture = ExtResource( 18 )
+
+[node name="Box5" type="Sprite" parent="backgroundBoxes4"]
+position = Vector2( 924, 268 )
+texture = ExtResource( 15 )
+
+[node name="Box6" type="Sprite" parent="backgroundBoxes4"]
+position = Vector2( 1390, 382 )
+texture = ExtResource( 20 )
+
+[node name="BoxThreestack1" type="Sprite" parent="backgroundBoxes4"]
+position = Vector2( 2422, 304 )
+texture = ExtResource( 10 )
+
+[node name="BoxTwostack3" type="Sprite" parent="backgroundBoxes4"]
+position = Vector2( 1910, 386 )
+texture = ExtResource( 16 )
+
+[node name="backgroundBoxes3" type="Node2D" parent="."]
+position = Vector2( -110, 13 )
+scale = Vector2( 0.5, 0.4 )
+
+[node name="Box1" type="Sprite" parent="backgroundBoxes3"]
+position = Vector2( 91, 365 )
+texture = ExtResource( 20 )
+
+[node name="Box2" type="Sprite" parent="backgroundBoxes3"]
+position = Vector2( 481, 424 )
+texture = ExtResource( 19 )
+
+[node name="Box3" type="Sprite" parent="backgroundBoxes3"]
+position = Vector2( 885, 487 )
+texture = ExtResource( 17 )
+
+[node name="Box4" type="Sprite" parent="backgroundBoxes3"]
+position = Vector2( 636, 166 )
+texture = ExtResource( 18 )
+
+[node name="Box5" type="Sprite" parent="backgroundBoxes3"]
+position = Vector2( 924, 268 )
+texture = ExtResource( 15 )
+
+[node name="Box6" type="Sprite" parent="backgroundBoxes3"]
+position = Vector2( 1390, 382 )
+texture = ExtResource( 20 )
+
+[node name="BoxThreestack1" type="Sprite" parent="backgroundBoxes3"]
+position = Vector2( 2422, 304 )
+texture = ExtResource( 10 )
+
+[node name="BoxTwostack3" type="Sprite" parent="backgroundBoxes3"]
+position = Vector2( 1910, 386 )
+texture = ExtResource( 16 )
+
+[node name="backgroundBoxes2" type="Node2D" parent="."]
+position = Vector2( -122, 166 )
+scale = Vector2( 0.5, 0.4 )
+
+[node name="Box1" type="Sprite" parent="backgroundBoxes2"]
+position = Vector2( 91, 365 )
+texture = ExtResource( 20 )
+
+[node name="Box2" type="Sprite" parent="backgroundBoxes2"]
+position = Vector2( 481, 424 )
+texture = ExtResource( 19 )
+
+[node name="Box3" type="Sprite" parent="backgroundBoxes2"]
+position = Vector2( 885, 487 )
+texture = ExtResource( 17 )
+
+[node name="Box4" type="Sprite" parent="backgroundBoxes2"]
+position = Vector2( 636, 166 )
+texture = ExtResource( 18 )
+
+[node name="Box5" type="Sprite" parent="backgroundBoxes2"]
+position = Vector2( 924, 268 )
+texture = ExtResource( 15 )
+
+[node name="Box6" type="Sprite" parent="backgroundBoxes2"]
+position = Vector2( 1390, 382 )
+texture = ExtResource( 20 )
+
+[node name="BoxThreestack1" type="Sprite" parent="backgroundBoxes2"]
+position = Vector2( 2422, 304 )
+texture = ExtResource( 10 )
+
+[node name="BoxTwostack3" type="Sprite" parent="backgroundBoxes2"]
+position = Vector2( 1910, 386 )
+texture = ExtResource( 16 )
+
 [node name="backgroundBoxes" type="Node2D" parent="."]
+position = Vector2( -129, 292 )
+scale = Vector2( 0.5, 0.4 )
 
-[node name="Sprite" type="Sprite" parent="backgroundBoxes"]
-position = Vector2( -140, 427 )
-scale = Vector2( 0.25, 0.25 )
+[node name="Box1" type="Sprite" parent="backgroundBoxes"]
+position = Vector2( 91, 365 )
+texture = ExtResource( 20 )
+
+[node name="Box2" type="Sprite" parent="backgroundBoxes"]
+position = Vector2( 481, 424 )
+texture = ExtResource( 19 )
+
+[node name="Box3" type="Sprite" parent="backgroundBoxes"]
+position = Vector2( 885, 487 )
+texture = ExtResource( 17 )
+
+[node name="Box4" type="Sprite" parent="backgroundBoxes"]
+position = Vector2( 636, 166 )
+texture = ExtResource( 18 )
+
+[node name="Box5" type="Sprite" parent="backgroundBoxes"]
+position = Vector2( 924, 268 )
+texture = ExtResource( 15 )
+
+[node name="Box6" type="Sprite" parent="backgroundBoxes"]
+position = Vector2( 1390, 382 )
+texture = ExtResource( 20 )
+
+[node name="BoxThreestack1" type="Sprite" parent="backgroundBoxes"]
+position = Vector2( 2422, 304 )
 texture = ExtResource( 10 )
 
-[node name="Sprite2" type="Sprite" parent="backgroundBoxes"]
-position = Vector2( 1129, 427 )
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 10 )
-flip_h = true
+[node name="BoxTwostack3" type="Sprite" parent="backgroundBoxes"]
+position = Vector2( 1910, 386 )
+texture = ExtResource( 16 )
 
 [node name="Floor" type="Sprite" parent="."]
 position = Vector2( 2322, 677 )
@@ -193,8 +356,46 @@ position = Vector2( 1119, 647 )
 [node name="Player" parent="." groups=["playerFollow"] instance=ExtResource( 14 )]
 position = Vector2( -21, 652 )
 
+[node name="boxAreaHolder" type="Node2D" parent="."]
+position = Vector2( 674, 629 )
+
+[node name="boxArea" parent="boxAreaHolder" instance=ExtResource( 21 )]
+texture = ExtResource( 19 )
+
+[node name="CollisionShape2D" parent="boxAreaHolder/boxArea/Area2D" index="0"]
+position = Vector2( 0, -13.3333 )
+shape = SubResource( 17 )
+
+[node name="boxAreaHolder2" type="Node2D" parent="."]
+position = Vector2( -94, 573 )
+
+[node name="boxArea" parent="boxAreaHolder2" instance=ExtResource( 21 )]
+position = Vector2( -19, -15 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 20 )
+
+[node name="CollisionShape2D" parent="boxAreaHolder2/boxArea/Area2D" index="0"]
+position = Vector2( 7.5, 37.5 )
+shape = SubResource( 18 )
+
+[node name="AnimationPlayer" parent="boxAreaHolder2/boxArea" index="1"]
+anims/RESET = SubResource( 19 )
+anims/boxShiver = SubResource( 20 )
+
+[node name="boxAreaHolder3" type="Node2D" parent="."]
+position = Vector2( 982, 711 )
+
+[node name="boxArea" parent="boxAreaHolder3" instance=ExtResource( 21 )]
+
+[node name="boxAreaHolder4" type="Node2D" parent="."]
+position = Vector2( 170, 733 )
+
+[node name="boxArea" parent="boxAreaHolder4" instance=ExtResource( 21 )]
+
 [connection signal="body_entered" from="QtIcon/Area2D" to="QtIcon" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="QtIcon/Area2D" to="QtIcon" method="_on_Area2D_body_exited"]
 
 [editable path="PauseLayer"]
 [editable path="QtIcon"]
+[editable path="boxAreaHolder/boxArea"]
+[editable path="boxAreaHolder2/boxArea"]

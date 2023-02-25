@@ -7,6 +7,7 @@ onready var quit = $MarginContainer/HBoxContainer/VBoxContainer/Quit
 func _ready():
 	resumeButton.grab_focus()
 	visible = false
+	$ControlsScreen._make_invisbile()
 
 #func _disable_buttons():
 #	if visible == false:
@@ -40,3 +41,7 @@ func _on_Quit_pressed():
 func _on_MainMenu_pressed():
 	get_tree().paused = false 
 	get_tree().change_scene("res://scenes/beginningScene.tscn")
+
+
+func _on_Controls_pressed():
+	$ControlsScreen._make_visible()

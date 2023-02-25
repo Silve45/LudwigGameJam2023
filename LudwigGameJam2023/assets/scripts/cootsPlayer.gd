@@ -145,6 +145,7 @@ func _on_hurtBox_body_entered(body):
 
 func _attack():
 	if Input.is_action_just_pressed("attack1"):
+		Globals.chargeHairBall = 0
 		soundEffects.stream = attackSound
 		soundEffects.volume_db = -20
 		soundEffects.play()

@@ -13,8 +13,8 @@ func _low_health():
 	pass
 
 func _process(delta):
-	if Input.is_action_just_pressed("debug"):
-		$AnimationPlayer.play("explodeStart")
+	pass
+
 
 func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name == "explodeStart":

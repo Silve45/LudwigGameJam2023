@@ -1,0 +1,123 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://resources/fonts/BigFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/scripts/ControlsScreen.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/controlKeys/Controls  4.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/controlKeys/Controls  1.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/controlKeys/Controls  7.png" type="Texture" id=5]
+[ext_resource path="res://resources/themes/CloseTheme.tres" type="Theme" id=6]
+[ext_resource path="res://assets/sprites/controlKeys/Controls  6.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/controlKeys/Controls  8.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/controlKeys/iButton.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/controlKeys/Controls  5.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/controlKeys/Controls  9.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/controlKeys/Controls  3.png" type="Texture" id=12]
+
+[node name="ControlsScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.752941 )
+
+[node name="XButton" type="Button" parent="."]
+margin_left = 98.0
+margin_top = 59.0
+margin_right = 141.0
+margin_bottom = 145.0
+theme = ExtResource( 6 )
+custom_fonts/font = ExtResource( 1 )
+text = "X"
+
+[node name="Move" type="Label" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 114.0
+margin_top = -354.0
+margin_right = 245.0
+margin_bottom = -274.0
+custom_fonts/font = ExtResource( 1 )
+text = "Move"
+
+[node name="Attack" type="Label" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 594.0
+margin_top = -350.0
+margin_right = 768.0
+margin_bottom = -270.0
+custom_fonts/font = ExtResource( 1 )
+text = "Attack"
+
+[node name="ShootHairball" type="Label" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 1150.0
+margin_top = -344.0
+margin_right = 1324.0
+margin_bottom = -264.0
+custom_fonts/font = ExtResource( 1 )
+text = "Shoot"
+
+[node name="interact" type="Label" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 1560.0
+margin_top = -346.0
+margin_right = 1791.0
+margin_bottom = -266.0
+custom_fonts/font = ExtResource( 1 )
+text = "interact"
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="KeysWASD" type="Sprite" parent="Sprites"]
+position = Vector2( 172, 370 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+
+[node name="interactKey" type="Sprite" parent="Sprites"]
+position = Vector2( 1661, 447 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 9 )
+
+[node name="interactController" type="Sprite" parent="Sprites"]
+position = Vector2( 1677, 821 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 5 )
+
+[node name="KeysArrow" type="Sprite" parent="Sprites"]
+position = Vector2( 175, 564 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 10 )
+
+[node name="dPad" type="Sprite" parent="Sprites"]
+position = Vector2( 179, 827 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 7 )
+
+[node name="attackController" type="Sprite" parent="Sprites"]
+position = Vector2( 674, 803 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 8 )
+
+[node name="attackMouse" type="Sprite" parent="Sprites"]
+position = Vector2( 651, 458 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 12 )
+
+[node name="shootMouse" type="Sprite" parent="Sprites"]
+position = Vector2( 1225, 454 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 3 )
+
+[node name="shootController" type="Sprite" parent="Sprites"]
+position = Vector2( 1247, 810 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 11 )
+
+[connection signal="pressed" from="XButton" to="." method="_on_XButton_pressed"]

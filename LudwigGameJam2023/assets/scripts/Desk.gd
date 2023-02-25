@@ -1,5 +1,6 @@
 extends Node2D
 export var finished = false
+
 onready var ludwigAnimation = $Ludwig/AnimationPlayer
 onready var animationPlayer = $AnimationPlayer
 onready var stateTimer = $state_timer
@@ -8,7 +9,8 @@ onready var ludwigEyeAnimation = $newLudwig/AnimationPlayer
 onready var spawner1 = $spawners/Spawner
 onready var spawner2 = $spawners/Spawner2
 onready var spawner3 = $spawners/Spawner3
-
+onready var soundEffects = $soundEffects
+onready var explosion = load("res://assets/soundEffects/explosionSound.wav")
 
 var handRegular = load("res://assets/sprites/gameSprites/LudwigHands/Open-Hand.png")
 var handSnap = load("res://assets/sprites/gameSprites/LudwigHands/Snap2.png")
@@ -121,6 +123,9 @@ func _kitchen_catch(argument):#has to be the word argument
 		ludwigEyeAnimation.play("explodeStart")
 	if argument == 'lud_explode_finish':
 		ludwigEyeAnimation.play("explodeFinish")
+		soundEffects.stream = explosion
+		soundEffects.volume_db = -10
+		soundEffects.play()
 		$Cage/AnimationPlayer.play("cage_explode")
 
 func _beginning_dialogic():

@@ -20,8 +20,9 @@
 [ext_resource path="res://assets/animations/hurtCoots.tres" type="Animation" id=18]
 [ext_resource path="res://assets/animations/dead.tres" type="Animation" id=19]
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 22, 34.5 )
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 20.0
+height = 39.0
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 14, 33 )
@@ -429,9 +430,9 @@ speed = 350.0
 knockback_modifier = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 2.5 )
+position = Vector2( 0, -3 )
 z_index = 4
-shape = SubResource( 7 )
+shape = SubResource( 12 )
 
 [node name="Coots" type="Sprite" parent="."]
 position = Vector2( 0, 25 )

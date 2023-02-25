@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/sprites/gameSprites/MainScreen/BG.png" type="Texture" id=1]
 [ext_resource path="res://assets/scripts/titleScreen.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/sprites/gameSprites/MainScreen/Fire.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/gameSprites/MainScreen/Shadow.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/gameSprites/MainScreen/Coots.png" type="Texture" id=12]
+[ext_resource path="res://scenes/ControlsScreen.tscn" type="PackedScene" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 250
@@ -171,21 +172,29 @@ margin_bottom = 300.0
 custom_constants/separation = 50
 
 [node name="Play" type="Button" parent="ButtonHolder"]
-margin_right = 460.0
+margin_right = 497.0
 margin_bottom = 86.0
 custom_fonts/font = ExtResource( 4 )
 text = "Play"
 
+[node name="Controls" type="Button" parent="ButtonHolder"]
+margin_top = 136.0
+margin_right = 497.0
+margin_bottom = 222.0
+custom_fonts/font = ExtResource( 4 )
+text = "Controls"
+
 [node name="specialButton" type="Button" parent="ButtonHolder"]
-margin_right = 460.0
-margin_bottom = 86.0
+margin_top = 272.0
+margin_right = 497.0
+margin_bottom = 358.0
 custom_fonts/font = ExtResource( 4 )
 text = "BeatTheGameFirst"
 
 [node name="rickroll" type="Button" parent="ButtonHolder"]
-margin_top = 136.0
-margin_right = 460.0
-margin_bottom = 222.0
+margin_top = 408.0
+margin_right = 497.0
+margin_bottom = 494.0
 custom_fonts/font = ExtResource( 4 )
 text = "RickRoll"
 
@@ -241,5 +250,9 @@ scale = Vector2( 1.02292, 1.03611 )
 z_index = -10
 texture = ExtResource( 11 )
 
+[node name="ControlsScreen" parent="." instance=ExtResource( 13 )]
+visible = false
+
 [connection signal="pressed" from="ButtonHolder/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="ButtonHolder/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="ButtonHolder/rickroll" to="." method="_on_I_dont_know_pressed"]

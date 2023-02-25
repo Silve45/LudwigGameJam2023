@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/scripts/Portal.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/gameSprites/GarageScene/Portal.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/gameSprites/ludwigSprite/ExclamationPoint.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/controlKeys/iButton.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 733.3
@@ -21,8 +21,8 @@ position = Vector2( -40, 20 )
 shape = SubResource( 1 )
 
 [node name="exlamationPoint" type="Sprite" parent="."]
-position = Vector2( -110, -1110 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( -50, -1310 )
+scale = Vector2( 25, 25 )
 texture = ExtResource( 3 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

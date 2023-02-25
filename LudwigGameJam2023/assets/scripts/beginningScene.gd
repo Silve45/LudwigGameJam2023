@@ -5,6 +5,7 @@ onready var animationPlayer = $AnimationPlayer
 func _ready():
 	animationPlayer.play("beginningCutscene")
 	_play_music()
+	
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

@@ -1,6 +1,9 @@
 extends Sprite
 
+onready var explosion = load("res://assets/soundEffects/explosionSound.wav")
+onready var soundEffects = $AudioStreamPlayer
 onready var animationPlayer = $AnimationPlayer
+
 var towerDead = false
 signal boom
 
@@ -18,6 +21,9 @@ func _on_hurtBox_area_entered(area):
 func _tower_dead():
 	if Globals.catTowerHealth == 0 && towerDead == false:
 		animationPlayer.play("towerDead")
+		soundEffects.stream = explosion
+		soundEffects.volume_db = -10
+		soundEffects.play()
 		towerDead = true
 
 
