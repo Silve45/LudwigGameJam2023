@@ -422,6 +422,7 @@ tracks/12/keys = {
 extents = Vector2( 10, 27 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 18
 script = ExtResource( 1 )
 Hairball = ExtResource( 16 )
 speed = 300.0

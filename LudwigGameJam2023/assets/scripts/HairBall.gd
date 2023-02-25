@@ -31,3 +31,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_HairBall_area_entered(area):#destroy when it hits enemys
 	_destroy()
 
+func _on_HairBall_body_entered(body):
+	_destroy()

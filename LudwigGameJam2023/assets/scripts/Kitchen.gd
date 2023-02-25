@@ -2,17 +2,60 @@ extends Node2D
 export var finished = false
 
 onready var animationPlayer = $AnimationPlayer
+onready var zoneTimer = $zoneTimer
+onready var drinkTimer = $drinkTimer
 
 var top = false
 var middle = false
 var bottom = false
+var interupted = false
+
+var zone1 = false
+var zone2 = false
+var zone3 = false
+
 
 func _ready():
 	$Player.connect("dead", self, "_try_again")
 	_beginng_Dialog()
 	$towerHealthBar.visible = false
 	$AnimationPlayer.play("RESET")
+	$catTower.connect("boom", self, "_interupted")
 #	_camera_limit()
+
+func _zone1():
+	if Globals.catTowerHealth == 11 && zone1 == false:
+		animationPlayer.play("push")
+		zone1 = true
+		zoneTimer.start()
+
+func _zone2():
+	if Globals.catTowerHealth == 7 && zone2 == false:
+		animationPlayer.play("push")
+		zone2 = true
+		zoneTimer.start()
+
+func _zone3():
+	if Globals.catTowerHealth == 4 && zone3 == false:
+		animationPlayer.play("push")
+		zone3 = true
+		zoneTimer.start()
+
+
+func _on_zoneTimer_timeout():
+	animationPlayer.play_backwards("push")
+
+func _drinking():
+	drinkTimer.start()
+	$ders/AnimationPlayer.play("jump up")
+
+func _on_drinkTimer_timeout():
+	Globals.catTowerHealth += 1
+	$ders/AnimationPlayer.play("idle")
+
+func _interupted():
+	drinkTimer.stop()
+	$ders/AnimationPlayer.play("idle")
 
 func _try_again():
 	$CanvasLayer/DeathScene/AnimationPlayer.play("deathScene")
@@ -20,11 +63,14 @@ func _try_again():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("debug"):
-		animationPlayer.play("middle_to_bottom")
+		_drinking()
 	if Input.is_action_just_pressed("debug2"):
 		animationPlayer.play("clawSwipeVertical")
 	if Input.is_action_just_pressed("debug3"):
 		animationPlayer.play("clawSwipeHorizontal")
+	_zone1()
+	_zone2()
+	_zone3()
 
 
 func _beginng_Dialog():
@@ -80,3 +126,9 @@ func _on_AnimationPlayer_animation_started(anim_name):
 		$ders/AnimationPlayer.play("jump down")
 	else:
 		pass
+
+
+
+
+
+

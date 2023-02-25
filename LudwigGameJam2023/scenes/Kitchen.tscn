@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/fadeIn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scripts/Kitchen.gd" type="Script" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://assets/sprites/derFightSprites/ClawSwipe.png" type="Texture" id=23]
 [ext_resource path="res://assets/animations/clawSwipeHorizontal.tres" type="Animation" id=24]
 [ext_resource path="res://assets/animations/clawSwipeVertical.tres" type="Animation" id=25]
+[ext_resource path="res://assets/animations/push.tres" type="Animation" id=26]
+[ext_resource path="res://assets/sprites/derFightSprites/CirclePush.png" type="Texture" id=27]
 
 [sub_resource type="ShaderMaterial" id=11]
 shader = ExtResource( 12 )
@@ -95,6 +97,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
+
+[sub_resource type="CircleShape2D" id=14]
+radius = 30.0
 
 [sub_resource type="Animation" id=12]
 length = 0.001
@@ -398,6 +403,18 @@ tracks/24/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/25/type = "value"
+tracks/25/path = NodePath("StaticBody2D:scale")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 63.3062, 27.5322 )
@@ -471,6 +488,17 @@ layer = 4
 pause_mode = 2
 visible = false
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 479, 542 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 27 )
+
+[node name="push" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 14 )
+
 [node name="catTower" parent="." instance=ExtResource( 8 )]
 
 [node name="towerHealthBar" type="CanvasLayer" parent="."]
@@ -488,6 +516,7 @@ anims/clawSwipeHorizontal = ExtResource( 24 )
 anims/clawSwipeVertical = ExtResource( 25 )
 anims/middle_to_bottom = ExtResource( 20 )
 anims/middle_to_top = ExtResource( 22 )
+anims/push = ExtResource( 26 )
 anims/top_to_bottom = ExtResource( 19 )
 anims/top_to_middle = ExtResource( 17 )
 
@@ -627,7 +656,16 @@ collision_mask = 0
 shape = SubResource( 13 )
 disabled = true
 
+[node name="zoneTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="drinkTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
+[connection signal="timeout" from="zoneTimer" to="." method="_on_zoneTimer_timeout"]
+[connection signal="timeout" from="drinkTimer" to="." method="_on_drinkTimer_timeout"]
 
 [editable path="PauseLayer"]
