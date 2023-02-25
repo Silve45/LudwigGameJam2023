@@ -11,6 +11,7 @@ func _ready():
 	$Player.connect("dead", self, "_try_again")
 	_beginng_Dialog()
 	$towerHealthBar.visible = false
+	$AnimationPlayer.play("RESET")
 #	_camera_limit()
 
 func _try_again():
@@ -21,9 +22,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("debug"):
 		animationPlayer.play("middle_to_bottom")
 	if Input.is_action_just_pressed("debug2"):
-		animationPlayer.play("top_to_bottom")
-#	if Input.is_action_just_pressed("debug3"):
-#		animationPlayer.play("bottom_to_top")
+		animationPlayer.play("clawSwipeVertical")
+	if Input.is_action_just_pressed("debug3"):
+		animationPlayer.play("clawSwipeHorizontal")
 
 
 func _beginng_Dialog():
@@ -75,4 +76,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		print("top")
 
 func _on_AnimationPlayer_animation_started(anim_name):
-	$ders/AnimationPlayer.play("jump down")
+	if anim_name == "top_to_middle" || anim_name == "bottom_to_middle" || anim_name == "bottom_to_top" || anim_name == "middle_to_top" || "top_to_bottom" || anim_name == "middle_to_bottom":
+		$ders/AnimationPlayer.play("jump down")
+	else:
+		pass

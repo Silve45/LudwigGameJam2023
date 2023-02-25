@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scenes/fadeIn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scripts/Kitchen.gd" type="Script" id=2]
@@ -22,6 +22,9 @@
 [ext_resource path="res://assets/animations/middle_to_bottom.tres" type="Animation" id=20]
 [ext_resource path="res://assets/animations/bottom_to_top.tres" type="Animation" id=21]
 [ext_resource path="res://assets/animations/middle_to_top.tres" type="Animation" id=22]
+[ext_resource path="res://assets/sprites/derFightSprites/ClawSwipe.png" type="Texture" id=23]
+[ext_resource path="res://assets/animations/clawSwipeHorizontal.tres" type="Animation" id=24]
+[ext_resource path="res://assets/animations/clawSwipeVertical.tres" type="Animation" id=25]
 
 [sub_resource type="ShaderMaterial" id=11]
 shader = ExtResource( 12 )
@@ -107,6 +110,297 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 421, 85 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("ClawSwipesHorizontal/Swipe:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ClawSwipesHorizontal/Swipe2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ClawSwipesHorizontal/Swipe/Area2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ClawSwipesHorizontal/Swipe2/Area2D/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ClawSwipesHorizontal/Swipe:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("ClawSwipesHorizontal/Swipe2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ClawSwipes/Swipe:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("ClawSwipes/Swipe:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("ClawSwipes/Swipe/Area2D/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("ClawSwipes/Swipe2:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("ClawSwipes/Swipe2:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("ClawSwipes/Swipe2/Area2D/CollisionShape2D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("ClawSwipes/Swipe5:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("ClawSwipes/Swipe5:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("ClawSwipes/Swipe5/Area2D/CollisionShape2D:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("ClawSwipes/Swipe6:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("ClawSwipes/Swipe6:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("ClawSwipes/Swipe6/Area2D/CollisionShape2D:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("ClawSwipes/Swipe3:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("ClawSwipes/Swipe3:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("ClawSwipes/Swipe3/Area2D/CollisionShape2D:disabled")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("ClawSwipes/Swipe4:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("ClawSwipes/Swipe4:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("ClawSwipes/Swipe4/Area2D/CollisionShape2D:disabled")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 63.3062, 27.5322 )
 
 [node name="MainScene1" type="Node2D"]
 script = ExtResource( 2 )
@@ -164,7 +458,7 @@ format = 1
 [node name="HeartContainer" parent="heartLayer" instance=ExtResource( 7 )]
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 344, 646 )
+position = Vector2( 218, 627 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 4
@@ -190,10 +484,148 @@ position = Vector2( 421, 85 )
 anims/RESET = SubResource( 12 )
 anims/bottom_to_middle = ExtResource( 18 )
 anims/bottom_to_top = ExtResource( 21 )
+anims/clawSwipeHorizontal = ExtResource( 24 )
+anims/clawSwipeVertical = ExtResource( 25 )
 anims/middle_to_bottom = ExtResource( 20 )
 anims/middle_to_top = ExtResource( 22 )
 anims/top_to_bottom = ExtResource( 19 )
 anims/top_to_middle = ExtResource( 17 )
+
+[node name="ClawSwipes" type="Node2D" parent="."]
+
+[node name="Swipe" type="Sprite" parent="ClawSwipes"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -118.001, 621.97 )
+rotation = -1.57036
+scale = Vector2( 2.40289, 1 )
+texture = ExtResource( 23 )
+
+[node name="Area2D" type="Area2D" parent="ClawSwipes/Swipe"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClawSwipes/Swipe/Area2D"]
+position = Vector2( 0.195526, 0.534851 )
+shape = SubResource( 13 )
+disabled = true
+
+[node name="Swipe2" type="Sprite" parent="ClawSwipes"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 94, 620 )
+rotation = -1.57036
+scale = Vector2( 2.40289, 1 )
+texture = ExtResource( 23 )
+
+[node name="Area2D" type="Area2D" parent="ClawSwipes/Swipe2"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClawSwipes/Swipe2/Area2D"]
+position = Vector2( 0.195526, 0.534851 )
+shape = SubResource( 13 )
+disabled = true
+
+[node name="Swipe5" type="Sprite" parent="ClawSwipes"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 376, 723 )
+rotation = -1.57036
+scale = Vector2( 2.40289, 1 )
+texture = ExtResource( 23 )
+
+[node name="Area2D" type="Area2D" parent="ClawSwipes/Swipe5"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClawSwipes/Swipe5/Area2D"]
+position = Vector2( 0.195526, 0.534851 )
+shape = SubResource( 13 )
+disabled = true
+
+[node name="Swipe6" type="Sprite" parent="ClawSwipes"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 585, 722 )
+rotation = -1.57036
+scale = Vector2( 2.40289, 1 )
+texture = ExtResource( 23 )
+
+[node name="Area2D" type="Area2D" parent="ClawSwipes/Swipe6"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClawSwipes/Swipe6/Area2D"]
+position = Vector2( 0.195526, 0.534851 )
+shape = SubResource( 13 )
+disabled = true
+
+[node name="Swipe3" type="Sprite" parent="ClawSwipes"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 800, 623 )
+rotation = -1.57036
+scale = Vector2( 2.40289, 1 )
+texture = ExtResource( 23 )
+
+[node name="Area2D" type="Area2D" parent="ClawSwipes/Swipe3"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClawSwipes/Swipe3/Area2D"]
+position = Vector2( 0.195526, 0.534851 )
+shape = SubResource( 13 )
+disabled = true
+
+[node name="Swipe4" type="Sprite" parent="ClawSwipes"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 1065, 623 )
+rotation = -1.57036
+scale = Vector2( 2.40289, 1 )
+texture = ExtResource( 23 )
+
+[node name="Area2D" type="Area2D" parent="ClawSwipes/Swipe4"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClawSwipes/Swipe4/Area2D"]
+position = Vector2( 0.195526, 0.534912 )
+shape = SubResource( 13 )
+disabled = true
+
+[node name="ClawSwipesHorizontal" type="Node2D" parent="."]
+
+[node name="Swipe" type="Sprite" parent="ClawSwipesHorizontal"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 499.107, 531 )
+scale = Vector2( 10.7796, 1 )
+texture = ExtResource( 23 )
+
+[node name="Area2D" type="Area2D" parent="ClawSwipesHorizontal/Swipe"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClawSwipesHorizontal/Swipe/Area2D"]
+position = Vector2( -0.899323, 0.534851 )
+shape = SubResource( 13 )
+disabled = true
+
+[node name="Swipe2" type="Sprite" parent="ClawSwipesHorizontal"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 497, 708 )
+scale = Vector2( 10.7796, 1 )
+texture = ExtResource( 23 )
+
+[node name="Area2D" type="Area2D" parent="ClawSwipesHorizontal/Swipe2"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClawSwipesHorizontal/Swipe2/Area2D"]
+shape = SubResource( 13 )
+disabled = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

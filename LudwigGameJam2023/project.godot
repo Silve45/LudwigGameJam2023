@@ -82,7 +82,10 @@ _global_script_class_icons={
 
 config/name="Ludwig Game Jam 2023"
 run/main_scene="res://scenes/Kitchen.tscn"
-config/icon="res://assets/sprites/testSprites/icon.png"
+boot_splash/show_image=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://assets/sprites/Shiny Star logo.png"
+config/windows_native_icon="res://assets/sprites/Shiny Star logo.ico"
 
 [autoload]
 
